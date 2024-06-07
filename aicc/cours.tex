@@ -407,6 +407,12 @@ Because we do not want to send too much data (sending the plaintext twice!), we 
 
 bit-rate: $\frac{log_D(M)}{n}$, D is the size of the alphabet, M is the number of codes in the codebook, n is the size of the codes in the codebook
 
-\paragraph{Minimum distance decoding}, we receive a codeword that goes through an error channel, and we pick the code in the codebook with the minimum hamming distance with the errored code.
+\paragraph{Minimum distance decoding}, we receive a codeword that goes through an error channel, and we pick the code in the codebook with the minimum hamming distance with the errored code.\\\\
+Let \( p \) be the maximum weight, the maximum number of errors we can make.
+
+\begin{itemize}
+    \item Detection: \( p < d_{\text{min}} \)
+    \item Correction: \( p < \frac{d_{\text{min}}}{2} \) (we must stay within the ball of a code)
+\end{itemize}
 
 \end{document}
