@@ -310,7 +310,7 @@ if p and q are prime:
     \item compute the check digits c = 98 - r
     \item replace 00 with this two-digit check number
     \item by construction, this new number will always be equal to 1 mod 97.
-    \item (
+    \item ($100n + 98 - (100n \mod 97)$)
 \end{itemize}
 
 \paragraph{multiplicative inverse} if there exists a multiplicative inverse for $ a $, $ \mod b $, then $ ax \mod b $ has a unique solution. Otherwise that's not necessarily the case:
