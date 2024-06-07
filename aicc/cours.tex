@@ -242,7 +242,7 @@ For regular sources:
 \paragraph{One-way function} ex. $ g \to g^a \mod{p} $. For reverse, it's a discrete logarithm problem to compute a such that $ g^a \mod p = A $
 
 \paragraph{Exchanging keys (Diffie and Hellman)} We agree on a $ p $ prime and a generator (see below).
-Let $ a $ the secret known by A, and $ b $ the secret known by  B $ \in \{ 1, 2, 3, ..., t-1 \} $
+Let $ a $ the secret known by A, and $ b $ the secret known by  B $ \in \{ 1, 2, 3, ..., p-1 \} $
 \begin{itemize}
     \item $ g^a $ is sent to B
     \item $ g^b $ is sent to A
@@ -255,7 +255,7 @@ therefore, the attacker knows $ g^a, g^b $ but can not compute $ g^{ab} $ while 
     \item $ t \cdot {g^{ab} \mod p} $
 \end{itemize}
 B needs to compute $ C $ s.t. $ C \cdot g^{ab} \mod p = 1 $.
-So then B can can $ t = C \cdot g^{ab} \cdot t \mod p $
+So then B can retrieve $ t = C \cdot g^{ab} \cdot t \mod p $
 
 \newpage
 
@@ -281,7 +281,7 @@ if you can find $ y $ s.t. $ yxb = 1 $ then it implies $ a \equiv b \mod z$
 \[ \text{ Let } \varphi{(n)} = \prod_{i = 1}^{r} (p_i - 1)p_i^{k_i-1} \]
 According to Euler's theorem, \textbf{if a and n are relatively prime}:
 \[ a^{\varphi(n)} \equiv 1 \mod{n} \]
-It represents the number of numbers co-prime with $ n $ before it (e.g. for 6, there is only 1 and 5, so phi(6) = 2).\\
+It represents the number of numbers co-prime with $ n $ before it (e.g. for 6, there is only 1 and 5, so $\varphi(6)$ = 2).\\
 if p is prime:
 \[ \phi(p^k) = p^k - p^{k-1} \]
 if p and q are prime:
