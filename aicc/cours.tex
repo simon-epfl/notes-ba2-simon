@@ -354,6 +354,36 @@ To fill it more quickly, think about the diagonals.
 Here we see that if we have a number congruent to 3 modulo 7 and congruent to 1 modulo 5, then it will be congruent to 31 modulo 35.\\\\
 We define \(\phi(n) : \mathbb{Z}/m_1m_2\mathbb{Z} \rightarrow \mathbb{Z}/m_1\mathbb{Z} \times \mathbb{Z}/m_2\mathbb{Z}\) as the function that, for a certain \( n \) in the table, gives the modulos in the two other lands.
 
+\subsubsection{Commutative Groups}
+
+\paragraph{Method: Checking if a Group \( G(\{a, b, c\}, \star, \circ) \) is Commutative}
+
+\begin{enumerate}
+    \item Find the identity element \( \phi \) such that \( \forall x, x \star \phi = x \).
+    \item Find the inverse element \( \alpha \) for each element such that \( \forall x, x \star \alpha = \phi \).
+    \item Verify that \( \forall x, y, z \in G \):
+    \begin{itemize}
+        \item \( x \star y \in G \)
+        \item \( (x \star y) \star z \equiv x \star (y \star z) \)
+        \item \( x \star y \equiv y \star x \)
+    \end{itemize}
+\end{enumerate}
+
+Do the same for \( \circ \).
+
+\paragraph{Method: Checking if a Group \( G(\{a, b, c\}, \star) \) is Isomorphic to \( H(\{e, f, g\}, \circ) \)}
+
+\begin{itemize}
+    \item Create a table of the two groups for each operation.
+    \item Look for elements that behave the same way (e.g., are they their own inverse?), and match them together.
+    \item Then, for the remaining elements, check if they have the same order.
+
+    The order of an element \( x \) in a group \( G \) is such that \( x^{\text{order}} = \text{identity} \). If two elements have the same order, then "they are isomorphic".
+
+    If two groups do not have the same cardinality, they are not isomorphic.
+\end{itemize}
+\textit{Usually}, when we write \( (\mathbb{Z}/2\mathbb{Z}, +) \times (\mathbb{Z}/3\mathbb{Z}, +) \), we use the operations component-wise.
+
 \newpage
 
 \subsection{RSA}
