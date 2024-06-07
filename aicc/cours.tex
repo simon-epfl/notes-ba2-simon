@@ -317,7 +317,7 @@ if p and q are prime:
 \[ [3]_9x \equiv [3]_9 \]
 \[ x \text { can be } [1]_9, [4]_9, [7]_9 \]
 
-\paragraph{Bezout (inverse)} $ a $ is inversible mod $ m $ iif $ \exists x $ such that:
+\paragraph{Bézout (inverse)} $ a $ is inversible mod $ m $ iif $ \exists x $ such that:
 \[ ax \equiv 1 \mod m \]
 \[ \Leftrightarrow ax - 1 = mk \]
 \[ \Leftrightarrow ax - mk = 1 \]
@@ -326,9 +326,19 @@ Therefore $ a $ is inversible $ \mod m $ iif $ \exists (x, y) $ such that $ ax +
 \textbf{If there is an inverse mod m, it is unique}.
 or use $ [b]_m^{\phi(m) -1} $
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $ gcd(a,b) $ & $a = bq + r$ & $q$ & $u = \tilde{v}$ & $v = \tilde{u} - q\tilde{v} $ \\
+        \hline
+    \end{tabular}
+    \label{tab:my_label}
+\end{table}
+
 \paragraph{Divisible} if $a/c$ and $b/c$ and $gcd(a, b) = 1$ then $ab/c$ (think about common prime factors to demonstrate it).
 
-\paragraph{$Z/Zm^*$}, we only keep elements of $ Z $ such that they do not have any common factor with m (co-prime). Therefore, when we multiply the numbers between them, the final result will always be co-prime with m. Therefore $Z/Zm^*$ is a commutative group.
+\paragraph{$\mathbb{Z}/\mathbb{Z}m^*$}, we only keep elements of $ \mathbb{Z} $ such that they do not have any common factor with m (co-prime). Therefore, when we multiply the numbers between them, the final result will always be co-prime with m. Therefore $\mathbb{Z}/\mathbb{Z}m^*$ is a commutative group.
 
 \paragraph{Order of an element a}, the smallest positive integer k such that $ a \cdot a \cdot ... \cdot a  = e $, where $ e $ is the identity. It always exists for finite commutative groups.?\\
 Any integer $p$ that also satifies this is a multiple of the order of $a$. The order of a must divide the number of elements in the commutative group G.
