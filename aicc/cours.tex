@@ -343,7 +343,8 @@ or use $ [b]_m^{\phi(m) -1} $
 \paragraph{Order of an element a}, the smallest positive integer k such that $ a \cdot a \cdot ... \cdot a  = e $, where $ e $ is the identity. It always exists for finite commutative groups.?\\
 Any integer $p$ that also satifies this is a multiple of the order of $a$. The order of a must divide the number of elements in the commutative group G.
 
-\paragraph{Generator} recall the fact that for Diffie Hellman we needed to pick a generator (a number such that when you exponentiate then modulo reduce, it gives you all the elements of the group). It is now clear to see that we should pick a number of the group with the order equal to $n$!
+\paragraph{Generator} recall the fact that for Diffie Hellman we needed to pick a generator (a number such that when you exponentiate then modulo reduce, it gives you all the elements of the group). It is now clear to see that we should pick a number of the group with the order equal to $n$!\\\\
+If we have a generator $g$ and an index $i$, on peut retrouver l'ordre de l'élément $g^i$ in the cyclic group: $ord(g^i) = \frac{ord(g)}{gcd(ord(g), i)}$
 
 \paragraph{Isomorphism} two groups are isomorphic if they have the same set of orders.
 
@@ -363,6 +364,7 @@ To fill it more quickly, think about the diagonals.
 
 Here we see that if we have a number congruent to 3 modulo 7 and congruent to 1 modulo 5, then it will be congruent to 31 modulo 35.\\\\
 We define \(\phi(n) : \mathbb{Z}/m_1m_2\mathbb{Z} \rightarrow \mathbb{Z}/m_1\mathbb{Z} \times \mathbb{Z}/m_2\mathbb{Z}\) as the function that, for a certain \( n \) in the table, gives the modulos in the two other lands.
+\(\phi^{-1}(a, b)\), on the contrary, gives us back the two modulos in the original lands.
 
 \subsubsection{Commutative Groups}
 
@@ -423,18 +425,8 @@ For example:
 \[
 10 \cdot 60 = 160 = 2^5 \cdot 5 \quad \mathrm{lcm}(10, 60) = 2^4 \cdot 5
 \]
-So if \( e \cdot d \equiv 1 \pmod{k} \), it means that 
-\[
-e \cdot d - 1 = \mathrm{lcm}(p-1, q-1) \cdot q
-\]
-\[
-e \cdot d - 1 = (p-1)(q-1) \cdot q \cdot \text{(missing terms, here 2)}
-\]
-\[
-e \cdot d \equiv 1 \pmod{(p-1)(q-1) = \Phi(m)}
-\]
+So if \( e \cdot d \equiv 1 \pmod{k} \), it means that it is also \( e \cdot d \equiv 1 \pmod{\Phi(m)} \).\\\\
 Similarly, the number used for encoding must be coprime with \( k \).\\\\
-\(\phi^{-1}(a, b)\), on the contrary, gives us back the two modulos in the original lands.
 
 \newpage
 
@@ -443,15 +435,19 @@ Similarly, the number used for encoding must be coprime with \( k \).\\\\
 We send $t$, the plain text and $[t^d]_m$. $e$ is available to the public. They can compute $[{t^d}^e]_m = [t]_m$ to check whether they get the right plain text again, to see if you are the real sender.\\\\
 Because we do not want to send too much data (sending the plaintext twice!), we hash the plaintext with a public function to reduce its size, then compute $[h^d]_m$. The goal for attackers is to seek for a plaintext that would give the same hash.
 
+\newpage
+
 \section{Channel coding}
 
-bit-rate: $\frac{log_D(M)}{n}$, D is the size of the alphabet, M is the number of codes in the codebook, n is the size of the codes in the codebook
+\paragraph{bit-rate}: $\frac{log_D(M)}{n}$, D is the size of the alphabet, M is the number of codes in the codebook, n is the size of the codes in the codebook
+\paragraph{Singleton's bound} $d_{\text{min}} \leq n - k + 1$ (make sure to use the right D, the size of the alphabet)
 
 \paragraph{Minimum distance decoding}, we receive a codeword that goes through an error channel, and we pick the code in the codebook with the minimum hamming distance with the errored code.\\\\
 Let \( p \) be the maximum weight, the maximum number of errors we can make.
 
 \begin{itemize}
     \item Detection: \( p < d_{\text{min}} \)
+    \item Correction of erasures: \( p < d_{\text{min}} \)
     \item Correction: \( p < \frac{d_{\text{min}}}{2} \) (we must stay within the ball of a code)
 \end{itemize}
 
