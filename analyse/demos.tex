@@ -1,0 +1,526 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\title{Démonstrations Analyse II}
+\author{Laura Paraboschi et Simon Lefort}
+\date{Enoncés et démonstrations des théorèmes à l'examen d'analyse II (Printemps 2024).}
+
+\begin{document}
+\maketitle
+
+Merci à Naïl Laraqui pour la relecture et la correction d'erreurs dans le document.
+
+\tableofcontents
+
+\newpage
+
+\section{Méthodes de démonstration}
+
+\subsection{Méthode : directe}
+ P$_{\text{conditions données}}$ $\implies$ Implications logiques, axiomes, propositions connues $\implies$ Q$_{\text{proposition désirée}}$
+\subsection{Méthode : par contraposée}
+P $\implies$ Q\hspace{10mm}$\Leftrightarrow$\hspace{10mm} non Q $\implies$ non P \hspace{10mm}$\Leftrightarrow$\hspace{10mm} $\neg$ Q $\implies$ $\neg$ P
+\subsection{Méthode : par disjonction de cas}
+
+Soient $ P, Q $ deux propositions. Pour montrer que $ P \implies Q $ on séparer l'hypothèse $ P $ de départ en différents cas possibles et on montre pour chacun des cas que $ P_i \implies Q $. \textbf{Il est important de considérer tous les cas possibles}.
+
+\paragraph{Exemple 1} Pour tout $ x, y \in \mathbf{R} $, on a :
+\[ ||x| - |y|| \leq |x-y| \]
+\begin{enumerate}
+    \item $ \mathbf{|x| \geq |y|} \implies ||x| - |y|| = |x| - |y| = |x-y+y| - |y| \leq |x-y| + |y| - |y| = |x-y| $
+    \item $ \mathbf{|x| < |y|} \implies ||x| - |y|| = -|x| + |y| = -|x| + |y-x+x| \leq -|x| + |y-x| + |x| = |y-x| $
+\end{enumerate}
+
+\subsection{Méthode : par l'absurde}
+Pour démontrer P, on essaie de démontrer que $\neg$P implique une proposition F qui est connue d'être fausse. (Donc $\neg$ P $\implies$ F qui est contradictoire aux axiomes, ou au propositions vraies préalablement établies)
+\subsection{Méthode : montrer une double implication}
+Pour montrer P  $\iff$ Q il y a 2 méthodes
+\begin{enumerate}
+    \item P $\implies$ Q \underline{\textbf{et}} Q $\implies$ P
+    \item Suite d'équivalences :  $P \iff R_1 \iff R_2 \iff ... \iff Q$. \textbf{Il faudra vérifier que chaque implication est une équivalence} 
+\end{enumerate}
+
+\subsection{Méthode : par le principe des tiroirs}
+
+Le pigeonhole principle vu en AICC I. Si $ n + 1 $ objets sont placés dans $ n $ tiroirs, alors au moins un tiroir contient 2 objets ou plus.\\\\
+Plus généralement : si $ n $ objets sont placés dans $ k $ tiroirs, alors au moins un tiroir contient $ \ceil*{\frac{n}{k}} = min( m \in \mathbb{N} : m \geq \frac{n}{k}) $ objets ou plus.
+
+\subsection{Méthode : par récurrence}
+
+Le principe fondamental de récurrence. Soit S $ \subset \mathbb{N} $ sous-ensemble : $ 0 \in S $, et pour tout $ n \in S $ on a $ (n+1) \in S $. Alors $ S = \mathbb{N} $.\\\\
+La méthode de récurrence : Soit $ P(n) $ une proposition qui dépend de $ n \in \mathbb{N},\ n \geq n_0 $.\\ Supposons que:
+\begin{itemize}
+    \item $P(n_0)$ est vraie
+    \item $ P(n) $ implique $ P(n+1) $ pour tout $ n \geq n_0 $ naturel.
+\end{itemize}
+Alors $ P(n) $ est vraie pour tout $ n \geq n_0 $.\\\\
+\subsubsection{La méthode de récurrence généralisée} : Soit $ P(n) $ une proposition qui dépend de $ n \in \mathbb{N},\ n \geq n_0 $:\\
+Supposons que:
+\begin{itemize}
+    \item $ P(n_0), .., P({n_0}+k) $ sont vraies pour un $ k \in \mathbb{N} $
+    \item $ \{ P(n), P(n+1), ..., P(n+k) \} $ impliquent $ P(n+k+1)\ \forall n \geq n_0,\ n \in \mathbb{N} $
+\end{itemize}
+Alors $ P(n) $ est vraie pour tout $ n \geq n_0,\ n \in \mathbb{N} $.
+
+\subsubsection{La méthode de récurrence forte} Soit $ n_0 \in \mathbb{N} $ et $ P(n) $ une proposition qui dépend de $ n \in \mathbb{N} : n \geq n_0 $.\\
+Supposons que 
+\begin{itemize}
+    \item $ P(n_0) $ est vraie
+    \item $ \{ P(n_0), P(n_0+1), ..., P(n) \} $ impliquent $ P(n+1)\ \forall n \geq n_0,\ n \in \mathbb{N} $
+\end{itemize}
+Alors $ P(n) $ est vraie pour tout $ n \geq n_0, n \in \mathbb{N} $.
+(différence avec la récurrence généralisée : $ P(n_0) $ implique déjà $ P(n_0+1) $ alors que dans la généralisée on a besoin de démontrer $ P(n_0) $ ET $ P(n_0+1) $).
+
+\subsubsection{La méthode de récurrence par deux variables}
+
+Soit $ P(n, m) $ une proposition, $ n, m > 0 $.
+
+\paragraph{Méthode carré}
+
+\begin{itemize}
+    \item $ P(0, 0) $ est vraie
+    \item $ P(n, 0) \implies P(n + 1, 0) \forall n \geq 0 $ 
+    \item $ \forall m, n\ P(n, m) \implies P(n, m + 1)$
+\end{itemize}
+$ \implies P(n, m) $ est vraie $ \forall n, m \in N $.
+
+\paragraph{Méthode diagonale}
+
+\begin{itemize}
+    \item $ P(0, 0) $ est vraie
+    \item $ P(n, 0) \implies P(n + 1, 0) \forall n \geq 0 $ 
+    \item $ \forall m, n\ P(n + 1, m) \implies P(n, m + 1) $
+\end{itemize}
+$ \implies P(n, m) $ est vraie $ \forall n, m \in \mathbb{N} $
+
+\paragraph{Méthode de deux directions}
+
+\begin{itemize}
+    \item $ P(0, 0) $ est vraie
+    \item $ \forall m, n\ P(n, m) \implies P(n, m + 1) \wedge P(n + 1, m) $ 
+\end{itemize}
+$ \implies P(n, m) $ est vraie $ \forall n, m \in \mathbb{N} $
+
+\newpage
+
+\section{Existence (et unicité) d'une solution pour EDVS $f(y) \neq 0$}
+
+En résumé : si on a une équation pour laquelle on peut séparer les variables, il n'y a pas deux fonctions différentes qui la vérifient sur le même intervalle.\\
+On utilise les intégrales de $F$ et de $G$ car elles nous permettent de tomber exactement sur la forme cherchée. Dans un premier temps, on montre que $x$ est une solution de l'équation et dans un second temps on montre qu'elle vérifie les conditions initiales.
+
+\subsection{Enoncé}
+
+Soient :
+\begin{itemize}
+    \item $ f: I \to \mathbb{R} $ continue t.q. $  \forall y \in I, f(y) \neq 0 $ (condition nécessaire, sinon il peut ne pas exister de solution, ou plusieurs)
+    \item $ g: J \to \mathbb{R} $ continue
+    \item et l'équation $ f(y) \cdot y' = g(x) $ qui lie les deux
+\end{itemize}
+Alors (existence) : 
+\[ \forall (b_0 \in I, x_0 \in J), \text{ l'équation } f(y) \cdot y'(x) = g(x) \]
+admet une unique solution telle que :
+\[ y : J' \subset J \to I \text{ et vérifiant } y(x_0) = b_0 \]
+De plus (unicité) :
+\[ \exists y_1 : J_1 \to I \text{ et } \exists y_2 : J_2 \to I \text{ vérifiant les conditions initiales } \implies y_1(x) = y_2(x), \forall x \in J_1 \cap J_2 \]
+
+\subsection{Démonstration}
+
+Idée (esquisse de la démo)
+\[ \int{f(y)dy}= \int{g(x)dx} \implies F(y) = G(x) \implies y(x) = F^{-1}(G(x)) \]\\\\
+Soit :
+\[ F(y(x)) = \int_{b_0}^{y(x)} f(t)dt \text{ pour avoir } 0 \text{ quand une fonction } y \text{ donne } b_0.\]
+\[ \text{ Alors F(y) est dérivable et monotone car } f(y) \text{ (continue) } = F'(y) \neq 0 \text{ sur } I \]
+\\
+Donc $ F $ est bijective et inversible sur $ I $.\\\\
+Soit:
+\[ G(x) = \int_{x_0}^{x}g(t)dt \implies G \text{ dérivable sur } J \text{ et } G'(x) = g(x) \text{ et } G(x_0) = 0 \]\\\\
+Soit:
+\[ y(x) = F^{-1}(G(x)) \text{ dans un voisinage de } x_0 \text{ (c'est l'idée de la preuve de poser ça)} \]
+On va montrer que $ y(x) $ est une solution de l'équation $ f(y) \cdot y'(x) = g(x) $ dans un voisinage de $ x_0 \in J $, et de plus $ y(x_0) = b_0 $.\\
+On a $ F(y(x)) = G(x) $ dans un voisinage de $ x_0 \in J $\\
+\[ \implies F'(y(x)) \cdot y'(x) = G'(x) \implies_{\text{par la def de } F'(x), G(x)} f(y) \cdot y'(x) = g(x) \]
+De plus:
+\[ y(x_0) = F^{-1}(G(x_0)) =_{G(x_0) = 0 \text{ par déf de } G(x)} F^{-1}(0) =_{F(b_0) = 0 \text{ par def de F, F bijective }} = b_0\]
+\[ \implies y(x_0) = b_0 \]
+
+\newpage
+
+\section{La solution générale d'une EDL1 est (particulière $ + Ce^{-P(x)} $)}
+
+Pour résoudre une équation différentielle d'ordre 1 (de la forme $ y'(x) + p(x)y(x) = f(x) $) :\\
+On cherche une solution pour l'équation homogène associée (ici $ Ce^{-P(x)}$).\\
+On cherche une solution pour l'équation non homogène (ici $ v_0(x) $).\\\\
+Ce théorème affirme que la solution \textbf{générale} de l'équation non homogène est:\\
+$ v(x) = \text{particulière} + \text{homogène} = v_0(x) + Ce^{-P(x)}$.
+
+\subsection{Enoncé}
+
+Soient $ p, f : I \to \mathbb{R} $ deux fonctions continues.\\
+Supposons que $ v_0 : I \to \mathbb{R} $ est une solution particulière de l'équation $ y'(x) + p(x)y(x) = f(x) $.
+Alors la solution générale de cette équation est donnée par :
+\[ v(x) = v_0(x) + Ce^{-P(x)}, \forall C \in \mathbb{R} \]
+où $ P(x) $ est \textbf{UNE} primitive de $ p(x) $ sur $ I $ (sans constante).
+
+\subsection{Démonstration}
+
+Soit $ v_0(x) $ une solution particulière de $ y'(x) + p(x)y(x) = f(x). $\\
+Soit $ v_1(x) $ une solution arbitraire de $ y'(x) + p(x)y(x) = f(x) $.\\
+On va démontrer que:
+\[ \exists C \in \mathbb{R}, \text{ t.q. } v_1(x) = v_0(x) + Ce^{-P(x)} \]
+\[ \Leftrightarrow \exists C \in \mathbb{R} : v_1(x) - v_0(x) = Ce^{-P(x)} \]
+Par le principe de superposition des solutions, la fonction $ v_1(x) - v_0(x) $ est une solution de l'équation homogène associée*.
+\[ y'(x) + p(x)y(x) = 0 \text{ est une EDVS } \]
+\[ \implies \text{ la solution générale de cette équation est donnée par } v(x) = Ce^{-P(x)} \]
+\[ \text{où }C \in \mathbb{R} \text{ et } P(x) \text{ est une primitive de } p(x) \text{ sur } I \]
+(on a trouvé ce résultat avec une méthode heuristique (\textbf{Ansatz}), pas d'algorithme ou de méthode pour être certain que le résultat marche sans tester).\\\\
+Alors il existe une valeur de $ C \in \mathbb{R} $ telle que $ v_1(x) - v_0(x) = Ce^{-P(x)} $. Puisque $ v_1(x) $ était une solution arbitraire, on obtient que l'ensemble des solutions de l'équation $ y'(x) + p(x)y(x) = f(x) $ est de la forme $ v(x) = v_0(x) + Ce^{-P(x)} $.\\
+Donc par la définiton $ v(x) $ est la solution \textbf{GENERALE}.
+
+\begin{quote}
+    \textbf{*Preuve (non demandée): } si $ v_0(x) $ et $ v_1(x) $ sont des solutions alors:
+    \begin{itemize}
+        \item $ v_0'(x) + p(x)v_0(x) = f(x) $
+        \item $ v_1'(x) + p(x)v_1(x) = f(x) $
+        \item et $ v_1(x) - v_0(x) $\\$ = v_1'(x) + p(x)v_1(x) - v_0'(x) - p(x)v_0(x) = f(x) - f(x) = 0 $\\ $ \Leftrightarrow v_1'(x) - v_0'(x) + p(x)(v_1(x) - v_0(x)) = 0$
+    \end{itemize}
+    Donc $ v_1(x) - v_0(x) $ est bien une solution de l'équation homogène associée.
+\end{quote}
+
+\newpage
+
+\section{Wronskien non nul $\Leftrightarrow v_1(x), v_2(x) $ lin. indép.}
+
+\subsection{Définition}
+
+Soit $ v_1, v_2 : I \to R $ deux fonctions dérivables sur $ I \subset R $.\\
+La fonction $ \mathbb{W}(v_1, v_2) : I \to R $ définie par :
+\[ \mathbb{W}(v_1, v_2) = \det\begin{pmatrix}
+v_1(x) & v_2(x)\\
+v_1'(x) & v_2'(x)
+\end{pmatrix} = v_1(x)v_2'(x) - v_2(x)v_1'(x) \]
+est appelée le \textbf{Wronskien} de $ v_1 $ et $ v_2 $.
+
+\subsection{Enoncé}
+
+Soient $ v_1, v_2 : I \to \mathbb{R} $ deux solutions de l'équation homogène : $ y''(x) + p(x)y'(x) + q(x)y(x) = 0 $.\\
+Alors :
+\[ v_1(x) \text{ et } v_2(x) \text{ sont linéairement indépendantes (P) } \Leftrightarrow \mathbb{W}(v_1, v_2) \neq 0,\ \forall x \in I \text{ (Q) }\]
+
+\subsection{Démonstration}
+
+\subsubsection{$ \neg P \implies \neg Q $}
+
+Les solutions sont linéairement dépendantes\\
+$ \implies $ sans perte de généralité, il existe $ c \in \mathbb{R} $ tel que $ v_2(x) = c \cdot v_1(x)\ \forall x \in I $.\\Alors on a :
+\[ W[v_1, v_2](x) = \det\begin{pmatrix}
+v_1(x) & c\cdot{v_1(x)}\\
+v_1'(x) & c\cdot{v_1'(x)}
+\end{pmatrix} = c\cdot{v_1(x)}v_1'(x) - c\cdot{v_1(x)}v_1'(x) = 0,\ \forall x \in I \]
+
+\subsubsection{$ \neg Q \implies \neg P $}
+
+Supposons qu'il existe un $ x_0 \in I $ : $ W[v_1, v_2](x_0) = 0 $
+
+\[ \implies \det\begin{pmatrix}
+v_1(x_0) & v_2(x_0)\\
+v_1'(x_0) & v_2'(x_0)
+\end{pmatrix} = 0 \implies \text{ il existe un vecteur non nul } \begin{pmatrix}
+a \\
+b
+\end{pmatrix} \in \mathbb{R}^2  \text{ tel que : }
+\]
+\[ \begin{pmatrix}
+v_1(x_0) & v_2(x_0)\\
+v_1'(x_0) & v_2'(x_0)
+\end{pmatrix}\begin{pmatrix}
+a \\
+b
+\end{pmatrix} = \begin{pmatrix}
+0 \\
+0
+\end{pmatrix} \implies
+\begin{cases}
+  av_1(x_0) + bv_2(x_0) = 0\\
+  av_1'(x_0) + bv_2'(x_0) = 0
+\end{cases}
+\]\\
+Soit $ v(x) = av_1(x) + bv_2(x) $.\\
+Alors $ v(x) $ est aussi une solution de l'EDL2 homogène et de plus $ v(x_0) = 0 $ et $ v'(x_0) = 0 $.\\\\
+Par le théorème de l'existence et unicité d'une solution de l'EDL2 homogène satisfaisant les conditions initiales $ y(x_0) = 0 $ et $ y'(x_0) = 0 $ et comme la solution triviale $ y(x) = 0\ \forall x \in I $ satisfaisait l'équation et ces mêmes conditions initiales $ \implies v(x) = a\cdot{v_1(x)} + b\cdot{v_2(x)} = y(x) = 0\ \forall x \in I. $\\\\
+Ainsi, puisque $ a $ et $ b $ ne sont pas tous les deux nuls:
+\[ \implies \begin{cases}
+    v_1(x) = - \frac{b}{a}v_2(x)\ \forall x \in I\\
+    v_2(x) = - \frac{a}{b}v_1(x)\ \forall x \in I
+\end{cases}\]
+Donc $ v_1 $ et $ v_2 $ sont linéairement dépendantes.
+
+\newpage
+
+\section{La solution générale d'une EDL2 est $ C_1 $(lin. indép. 1) + $C_2$(lin. indép. 2)}
+
+\subsection{Enoncé}
+
+Soient $ v_1, v_2 : I \to \mathbb{R} $ deux solutions linéairement indépendantes de l'équation $ y''(x) + p(x)y'(x) + q(x)y(x) = 0 $. Alors la solution générale de cette équation est de la forme :
+\[ v(x) = C_1v_1(x) + C_2v_2(x),\ C_1, C_2 \in \mathbb{R}, x \in I \]
+
+\subsection{Démonstration}
+
+Soit $ \tilde{v}(x) $ une solution de l'équation donnée. Soit $ x_0 \in I $. Alors $ \tilde{v}(x_0) = a_0 \in \mathbb{R} $ et $ \tilde{v}'(x_0) = b_0 \in \mathbb{R} $.\\\\
+Soient deux solutions de l'équation linéairement indépendantes $ v_1, v_2 : I \to \mathbb{R} $.\\
+Alors en particulier on sait que: 
+\[ \mathbb{W}[v_1, v_2](x) \neq 0\ \forall x \in I \implies \mathbb{W}[v_1, v_2](x_0) \neq 0 \]
+Comme le Wronskien est non-nul (notamment en $x_0$), alors la matrice associée au Wronskien est inversible (donc injective), donc uniques constantes $ c_1, c_2 \in \mathbb{R} $ t.q :
+\[ \begin{pmatrix}
+v_1(x_0) & v_2(x_0)\\
+v_1'(x_0) & v_2'(x_0)
+\end{pmatrix}\begin{pmatrix}
+c_1 \\
+c_2
+\end{pmatrix} = \begin{pmatrix}
+a_0 \\
+b_0
+\end{pmatrix} \Leftrightarrow \begin{cases}
+    c_1v_1(x_0) + c_2v_2(x_0) = a_0\\
+    c_1v_1'(x_0) + c_2v_2'(x_0) = b_0
+\end{cases} \]\\
+Considérons la fonction $ v(x) = c_1v_1(x) + c_2v_2(x). $ Alors :
+\begin{itemize}
+    \item $ v(x) $ est une solution de l'équation, puisque $ v_1(x) $ et $ v_2(x) $ sont des solutions (superposition des solutions pour une équation homogène)
+    \item $ v(x_0) = a_0 $, $ v'(x_0) = b_0 $
+\end{itemize}
+Par le théorème de l'existence et l'unicité de solutions de l'EDL2 homogène satisfaisant les conditions initiales données $ v(x_0) = a_0, v'(x_0) = b_0 $. On a :
+\[ \tilde{v}(x) = v(x) = c_1v_1(x) + c_2v_2(x) \forall x \in I\] 
+
+\newpage
+
+\section{Sous-ensemble E fermé $ \Leftrightarrow $ tt suite de E qui converge a pour lim. un él. de E}
+
+(Cours 8)\\\\
+On va montrer que si la limite n'appartient pas à $E$ fermé alors il existe une boule de rayon $\delta$ autour de la valeur de la limite de la suite telle qu'elle n'intersecte pas avec $E$ (car CE est ouvert), donc avec l'ensemble des valeurs de la suite (qui elles sont dans $E$). Sauf... que par la définition de la limite il \textbf{va} y avoir un moment où les termes de la suite auront comme distance entre eux plus petite que $\delta$ (par exemple elle vaut $\frac{\delta}{2}$). Donc l'intersection n'est pas nulle.\\\\
+Ensuite, on veut montrer que si $E$ n'est pas fermé (mais pas nécessairement ouvert) alors il existe une suite dont la limite est en dehors de $E$.
+
+\subsection{Enoncé}
+
+Un sous-ensemble non vide $ E \subset \mathbb{R}^n $ est fermé (P) $\Leftrightarrow$ toute suite $ x_k \in E $ qui converge a pour limite un élément de E (Q).
+
+\subsection{Démonstration}
+
+\subsubsection{sens direct (par l'absurde) $ P \wedge \neg{Q} $}
+
+Soit $ \lim_{k\to\infty} \Bar{x_k} = \Bar{x} $ et $ \Bar{x_k} \in E\ \forall k \in \mathbb{N}  $. Supposons par l'absurde que $ \Bar{x} \notin E $ et que $ E $ est fermé.
+\[ \implies \Bar{x} \in CE \text{ où $ CE $ est ouvert dans } \mathbb{R}^n \]
+\[ \implies \exists \delta > 0 : \mathbf{B}(\Bar{x}, \delta) \subset CE \text{ et donc } \{ \Bar{x_k}\ \forall k \in \mathbb{N} \} \cap B(\Bar{x}, \delta) = \emptyset \]
+D'un autre côté :
+\[ \lim_{k\to\infty} \Bar{x_k} = \Bar{x} \implies \exists k_0 \in \mathbb{N} \text{ t.q } \forall k \in \mathbb{N} \geq k_0, \Bar{x_k} \in \overline{B(\overline{x}, \delta/2)} \subset B({\Bar{x}, \delta}) \]
+Absurde. Alors $ P \implies Q $.
+
+\subsubsection{sens inverse (par contraposée) $ \neg P \implies \neg Q $}
+
+Supposons que E n'est pas fermé. Alors CE n'est pas ouvert.
+\[ \implies \exists \Bar{y} \in CE : \forall k \in \mathbb{N_+}\ B(\Bar{y}, 1/k) \cap E \neq \emptyset \]
+\[ \implies \exists \Bar{y_k} \in B(\Bar{y}, 1/k) \text{ tel que } \Bar{y_k} \in E \]
+\[ \text{ on a obtenu une suite } \{ \Bar{y_k} \}_{k \in \mathbb{N}} \subset E \text{ et } \lim_{k\to\infty} \Bar{y_k} = \Bar{y} \in CE \Leftrightarrow \Bar{y} \notin E. \implies \neg{Q} \]
+
+Alors $ Q \implies P $.
+
+\newpage
+
+\section{Caractérisation de la limite à partir des suites convergentes}
+
+(Cours 9)\\\\
+Dans un premier temps, on écrit la définition de la limite d'une fonction à plusieurs variables (elle ressemble à celle d'analyse I, mais ici on pose que pour n'importe quel point $\overline{x}$ proche d'une distance $\delta$ du point de calcul de la limite (on regarde la norme, et non l'index de l'élément comme en Analyse 1), alors la valeur de $f$ en ce point est d'une distance inférieure à $\epsilon$ de la valeur de la limite).\\
+Ensuite on montre que si on prend une suite $a_k$ qui converge vers le point considéré pour la limite de $f$, alors au bout d'un moment ses termes seront tous proches d'une distance inférieure à $\delta$ de ce point de calcul de la limite donc si on évalue $f$ en ce point on obtiendra bien une valeur d'une distance inférieure à $\epsilon$ de la valeur de la limite.\\\\
+Dans un second temps on montre qu'on peut trouver une suite qui se rapproche infiniment du point de calcul de la limite de $f$ mais telle que $f$ évaluée en ces points ne converge pas vers la limite de $f$ (elle reste supérieure à un delta). On prend la suite t.q la différence entre $x_0$ et l'élément de la suite est de $\frac{1}{k}$. 
+
+\subsection{Enoncé}
+
+Une fonction $ f : E \to \mathbb{R} $ définie au voisinage de $ \Bar{x_0} $ admet pour limite $ l \in \mathbb{R} $ lorsque $ \Bar{x} \to \Bar{x_0} $ (P)\\
+$ \Leftrightarrow $ pour toute suite d'éléments $ \{\Bar{a_k}\} $ de $ \{ \Bar{x} \in E : \Bar{x} \neq \Bar{x_0} \} $ qui converge vers $ \Bar{x_0} $, la suite $ \{f(\Bar{a_k})\} $ converge vers $l$ (Q).  
+
+\subsection{Démonstration}
+
+\subsubsection{P $ \implies $ Q}
+
+\[ \lim_{\Bar{x}\to{\Bar{x_0}}} f(\Bar{x}) = l \implies \forall \epsilon > 0, \exists \delta > 0: \forall \Bar{x} \text{ t.q } 0 < ||\Bar{x}-\Bar{x_0}|| \leq \delta \implies |f(\Bar{x})-l| \leq \epsilon \]
+Si on prend pour une suite arbitraire $\{\Bar{a_k}\}$ t.q :
+\[ \lim_{k\to\infty} \Bar{a_k} = \Bar{x_0} \]
+\[ \implies \text{ pour ce même } \delta > 0\ \exists k_0 : \forall k \geq k_0 \implies ||\Bar{a_k} - \Bar{x_0}|| \leq \delta \]
+\[ \implies |f(\Bar{a_k}) - l| \leq \epsilon \]
+\[ \implies \lim_{k\to\infty} f(\Bar{a_k}) = l \]
+
+\subsubsection{$ \neg $ P $ \implies \neg $ Q}
+
+Supposons que :
+\[ \lim_{x\to{x_0}} f(\Bar{x}) \neq l \implies \exists \epsilon > 0 : \forall \delta > 0\ \exists \Bar{x_\delta} : ||\Bar{x_\delta} - \Bar{x_0}|| \leq \delta \text{ et } |f(\Bar{x_\delta}) - l| > \epsilon \]
+
+On peut choisir:
+\[ \delta = \frac{1}{k}, k \in \mathbf{N^*} \implies \exists \Bar{x_k} \in E : ||\Bar{x_k} - \Bar{x_0}| \leq \frac{1}{k} \text{ et } |f(\Bar{x_k}) - l| > \epsilon \]
+
+On obtient la suite:
+\[ \{\Bar{x_k}\}_{k = 1}^{\infty} : \lim_{k\to\infty} \Bar{x_k} = \Bar{x_0} \text{ mais } |f(\Bar{x_k}) - l| > \epsilon \forall k \in N^* \implies \lim_{k\to\infty} f(\Bar{x_k}) \neq l \]
+
+\newpage
+
+\section{Maximum et minimum d'une fonction sur un compact}
+
+(Cours 10)\\\\
+On veut montrer que si $f$ est continue sur $E$ alors il existe bien un $\overline{a}$ et un $\overline{b}$ dans $E$ tels que $f(a) = \min f(E)$ et $f(b) = \max f(E)$ (en résumé, que le min et le max ne sont pas uniquement des limites non atteintes).\\\\
+D'abord on veut montrer que $f$ est bornée (sinon il n'y a pas de min ni de max). On suppose qu'elle ne l'est pas et on construit une suite telle que la valeur de f évaluée en $x_k$ est supérieure à k (elle doit exister si f n'est pas bornée). Cette suite qui n'est composée que d'éléments de l'ensemble E (qui est compact donc borné), est forcément bornée. D'une suite bornée on peut toujours extraire une suite convergente qui tend vers un élément de cette suite, qu'on appelle $x_0$. Puisque f est continue, évaluer sa valeur en ce point ou au voisinage de ce dernier (par la limite) donne la même valeur. Seulement, nous utilisons le fait que $f$, par définition de la suite $x_{k_p}$, ne peut pas converger vers une valeur quand $k_p$ tend vers l'infini or c'est la définition de la continuité. Donc $f$ est bornée.\\\\
+Maintenant on sait qu'il existe un sup et un inf aux valeurs de $f$ dans $E$ (mais on ne sait pas encore si elles sont \textbf{atteintes} pour un $a, b$ dans E). L'idée c'est qu'on sait qu'on peut créer deux suites d'éléments de E convergentes t.q leur limite évaluée par $f$ est le sup et l'inf de $f$ dans $E$. Comme $E$ est fermé, on sait que ces limites sont dans $E$. Donc $f$ atteint son min et son max sur $E$.
+
+\subsection{Enoncé}
+
+Une fonction $ f $ \textbf{continue} sur un sous-ensemble compact $ E \subset \mathbb{R}^2 $ atteint son maximum et son minimum.
+
+\subsection{Démonstration}
+
+\subsubsection{$ \{f(\Bar{x})\}_{\Bar{x} \in E} $ est bornée (démo par l'asburde)}
+
+Supposons que f n'est pas bornée sur E.
+
+\[ \implies \forall k \geq 0, \exists \Bar{x_k} \in E \text{ t.q. } |f(\Bar{x_k})| \geq k \]
+Ceci nous donne une suite $ \{\Bar{x_k}\} \in E $. Comme E est un ensemble compact, nous savons qu'il est borné donc $ \{\Bar{x_k}\} $ est bornée.\\\\
+$ \implies $ Par Bolzano-Weirstrass, on peut trouver une sous-suite convergente telle que :
+\[ \{ \overline{x_{k_p}}\}_{p = 0}^{\infty} \text{ dont la limite est } \Bar{x_0} \text{ quand $ p $ tend vers l'infini } \]
+Et comme $ E $ est fermé $ \implies \Bar{x_0} \in E $.\\\\
+Puisque f est continue, $\lim_{p\to\infty} f(\overline{{x_k}_p}) = f(\Bar{x_0}) \in \mathbb{R}, \Bar{x_0} \in E $ donc $f(\overline{{x_k}_p})$ doit être bornée et converger\\
+Mais c'est impossible puisque par construction $ |f(\Bar{x_k})| \geq k\ \forall k \in \mathbb{N} \implies |f(\overline{{x_k}_p})| > k_p$ pour des $k_p$tendant à l'infini donc $f(\overline{{x_k}_p}) $ n'est pas bornée et ne peut donc pas converger (ce qui est nécessaire pour admettre une limite).\\\\
+$ \implies $ f est bornée sur E.
+
+\subsubsection{f atteint son min et son max sur E}
+
+$ f(E) $ est un sous-ensemble borné de $ \mathbb{R} \implies $
+\begin{itemize}
+    \item $ \exists M = \text{sup } \{f(\Bar{x}), \Bar{x} \in E \}$
+    \item $ \exists m = \text{inf } \{f(\Bar{x}), \Bar{x} \in E \}$
+\end{itemize}
+
+$ \implies \exists \{\Bar{a_k}\}, \{\Bar{b_k}\} \subset E : \lim_{k\to\infty} f(\Bar{a_k}) = m,\ \lim_{k\to\infty} f(\Bar{b_k}) = M $ (par la déf de sup et inf, on peut se rapprocher arbitrairement des points de sup et d'inf)\\
+
+$ \{\Bar{a_k}\},\{\Bar{b_k}\} \subset E \text{ bornées } \implies \exists $ sous-suites convergentes $ \Bar{{a_k}_p} \to \Bar{a} $ et $ \Bar{{b_k}_p} \to \Bar{b} $
+
+Puisque $ E $ est fermé $ \implies \Bar{a} \in E $ et $ \Bar{b} \in E $.
+
+\[ \text{Comme $f$ est continue alors } \lim_{p\to\infty} f(\Bar{{a_k}_p}) = f(\Bar{a}) \]
+\[ \text{ et par construction } \lim_{p\to\infty} f(\Bar{{a_k}_p}) = m \]
+
+\[ \implies \exists \Bar{a} \in E : f(\Bar{a}) = m = \text{min}_{\Bar{x}\in E} f(\Bar{x}) \] (même chose pour b)
+
+\newpage
+
+\section{Condition suffisante pour un extremum local de $ f : E \to \mathbb{R}$ en $ \overline{a} \in E $}
+
+(Cours 19)
+
+\subsection{Critère de Sylvester}
+
+Soit $ f : E \to \mathbb{R} $ une fonction de classe $ C^2 $ sur $ E, \overline{a} \in E $ un point stationnaire: $ \nabla{f(\overline{a})} = 0$.\\\\
+Soit $ \text{Hess}_f(\overline{a}) = \begin{pmatrix}
+\frac{\partial^2{f}}{\partial{x_1}^2} & ... & \frac{\partial^2{f}}{\partial{x_n}\partial{x_1}}\\
+... &  ... & ... \\
+\frac{\partial^2{f}}{\partial{x_1}\partial{x_n}} & ... & \frac{\partial^2{f}}{\partial{x_n}^2}
+\end{pmatrix}(\overline{a})$\\\\
+Alors :
+\begin{itemize}
+    \item si toutes les valeurs propres de $ \text{Hess}_f(\overline{a}) $ sont positives $ \implies $ minimum local en $ \overline{a} $.
+    \item si toutes les valeurs propres de $ \text{Hess}_f(\overline{a}) $ sont négatives $ \implies $ maximum local en $ \overline{a} $.
+    \item s'il y a des valeurs positives et négatives $ \implies \overline{a} $ n'est pas un point d'extremim local.
+\end{itemize}
+
+\subsection{Énoncé}
+
+Cas n = 2. Les conditions du théorème sur la matrice $ \text{Hess}_f(\overline{a}) $ sont équivalentes aux conditions suivantes :\\
+Soit $ \text{Hess}_f(\overline{a}) = \begin{pmatrix}
+\frac{\partial^2{f}}{\partial{x_1}^2} & \frac{\partial^2{f}}{\partial{y}\partial{x}}\\
+\frac{\partial^2{f}}{\partial{x}\partial{y}} & \frac{\partial^2{f}}{\partial{y}^2}
+\end{pmatrix}(\overline{a}) = \begin{pmatrix}
+r & s\\
+s & t
+\end{pmatrix}$\\
+\begin{itemize}
+    \item (a) $ \lambda_1 > 0,\ \lambda_2 > 0 \Leftrightarrow \det(\text{Hess}_f(\overline{a})) > 0 $ et $ r > 0 $.
+    \item (b) $ \lambda_1 < 0,\ \lambda_2 < 0 \Leftrightarrow \det(\text{Hess}_f(\overline{a})) > 0 $ et $ r < 0 $.
+    \item (c) les valeurs propres sont de signes différents $ \Leftrightarrow \det(\text{Hess}_f(\overline{a})) < 0 $.
+\end{itemize}
+
+\subsection{Démonstration}
+
+Le déterminant et la trace d'une matrice sont des invariants de conjugaison.\\
+On peut diagonaliser et garder $\det{ODO^{-1}} = \det{D}$:\\
+\[ \begin{pmatrix}
+r & s\\
+s & t
+\end{pmatrix} = ODO = O\begin{pmatrix}
+\lambda_1 & 0\\
+0 & \lambda_2
+\end{pmatrix}O^{-1} \]
+\[ \implies \det \text{Hess}_f(\overline{a}) = rt - s^2 = det(D) = \lambda_1\lambda_2 \]
+\[ \implies \text{trace de } \text{Hess}_f(\overline{a}) = r + t = \text{Tr}(D) = \lambda_1 + \lambda_2 \]
+\\
+(c) $ \det \text{Hess}_f(\overline{a}) < 0 \Leftrightarrow \lambda_1\lambda_2 < 0 \Leftrightarrow \lambda_1 $ et $ \lambda_2 $ de signes opposés.\\\\
+(a) \textbf{(sens direct)} Supposons que $ \lambda_1 > 0, \lambda_2 > 0 \implies \det  \text{Hess}_f(\overline{a}) = \lambda_1\lambda_2 > 0 $\\
+Alors $ r > 0$ et $ t > 0 $ \textbf{car :}\\
+$ \lambda_1\lambda_2 = rt - s^2 > 0 \implies rt > s^2 > 0 \implies r $ et $ t $ sont de même signe.\\
+$ \text{Trace de } \text{Hess}_f(\overline{a}) = \lambda_1 + \lambda_2 = r + t > 0 $\\
+Alors $ \det(\text{Hess}_f(\overline{a})) > 0 $ et $ r > 0 $.\\\\
+\textbf{(sens inverse)} Supposons que $ \det(\text{Hess}_f(\overline{a})) > 0 $ et $ r > 0 \implies \det(\text{Hess}_f(\overline{a})) = \lambda_1\lambda_2 > 0 \implies \lambda_1 $ et $ \lambda_2 $ sont de même signe, $ rt > s^2 \geq 0 \implies rt > 0 $.\\
+$ rt > 0 \wedge r > 0 \implies t > 0 \implies \text{Trace de Hess}_f(\overline{a}) = r + t = \lambda_1 + \lambda_2 > 0 \implies \lambda_1 > 0 \wedge \lambda_2 > 0 $\\\\
+Même raisonnement pour b).
+
+\newpage
+
+\section{Méthode des multiplicateurs de Lagrange}
+
+(Cours 22)
+
+\subsection{Énoncé}
+
+Cas n = 2. Condition nécessaire pour un extremum sous contrainte. Soient les fonctions $ f, g : E \subset \mathbb{R}^2 \to \mathbb{R} $ de classe $ C^1 $. Supposons que $ f(x, y) $ admet un extremum en $ (a, b) \in E $ sous la contrainte $ g(x, y) = 0 $ et que $ \nabla g(x, y) \neq 0 $ pour $ g(x, y) = 0 $.\\\\
+Alors il existe $ \lambda \in \mathbb{R} $ tel que $ \nabla f(a, b) = \lambda \nabla g(a, b) $.
+
+\subsection{Démonstration}
+
+Supposons que $ \frac{\partial g}{\partial y}(a, b) \neq 0$ (le cas $\frac{\partial g}{\partial x}(a, b) \neq 0$ est similaire).\\
+On a $ g(a, b) = 0$ puisque $(a,b)$ satisfait $g(x, y) = 0$.\\
+Par le TFI il existe une fonction $y = h(x)$ de classe $ C^1$ au voisinage de $x = a$ telle que
+\[ h'(x) = - \frac{\frac{\partial g}{\partial x}(x, h(x))}{\frac{\partial g}{\partial y}(x, h(x))} \text{ et } g(x, h(x)) = 0 \]\\
+Si $(x,y)$ satisfait la contrainte autour de $(a,b)$ alors on peut remplacer $y=h(x)$ dans l'expression $f(x,y)$ pour obtenir une fonction d'une seule variable. Donc, sous contrainte de $g(x,y) = 0$ :
+\[ f(x,y) = f(x,h(x)) \implies \text{extrema locaux de f lorsque } f'(x, h(x)) = 0 \]
+\[ f'(x,h(x)) = \nabla f(x, h(x)) \cdot J_{x, h(x)} = \begin{pmatrix}
+\frac{\partial f}{\partial x}(x, h(x)) & \frac{\partial f}{\partial y}(x, h(x))
+\end{pmatrix}\begin{pmatrix}
+1 \\
+h'(x)
+\end{pmatrix} \]
+\[ = \frac{\partial f}{\partial x}(x, h(x)) + \frac{\partial f}{\partial y}(x, h(x)) \cdot h'(x) \]
+Si $(a,b)$ est un point d'extremum local de $f$ sous la contrainte alors:
+\[ \implies \frac{\partial f}{\partial x}(a,b) = - \frac{\partial f}{\partial y}(a,b) \cdot h'(a) \]
+Par le TFI $h'(a) = - \frac{\frac{\partial g}{\partial x}(a, b)}{\frac{\partial g}{\partial y}(a, b)} $
+\[ \implies \frac{\partial f}{\partial x}(a,b) =  \frac{\partial f}{\partial y}(a,b) \cdot \frac{\frac{\partial g}{\partial x}(a, b)}{\frac{\partial g}{\partial y}(a, b)} \]
+\[ \equiv v_1 = v_2 \cdot \frac{u_1}{u_2} \]
+$u_2 \neq 0$\\\\
+(1) Si $u_1 = 0 \implies v_1 = 0 \implies \nabla f(a,b) = (0, v_2), \nabla g(a,b) = (0, u_2) \implies \exists \lambda \in \mathbb{R} : v_2 = \lambda u_2 \implies \nabla f(a, b) = \lambda \nabla g(a, b) $\\\\
+(2) Si $u_1 \neq 0 \implies \frac{v_1}{u_1} = \frac{v_2}{u_2} := \lambda \in \mathbb{R} \implies (v_1, v_2) = \lambda (u_1, u_2) \Leftrightarrow \nabla f(a, b) = \lambda \nabla g(a, b) $
+
+\end{document}
