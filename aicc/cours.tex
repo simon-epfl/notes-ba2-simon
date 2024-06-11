@@ -368,7 +368,9 @@ We define \(\phi(n) : \mathbb{Z}/m_1m_2\mathbb{Z} \rightarrow \mathbb{Z}/m_1\mat
 
 \subsubsection{Commutative Groups}
 
-\paragraph{Method: Checking if a Group \( G(\{a, b, c\}, \star, \circ) \) is Commutative}
+\paragraph{(note) Commutative group}: a set endowed with a binary operation that satisfies the following properties:
+
+\paragraph{Method: Checking if a Group \( G(\{a, b, c\}, \star) \) is Commutative}
 
 \begin{enumerate}
     \item Find the identity element \( \phi \) such that \( \forall x, x \star \phi = x \).
@@ -381,7 +383,16 @@ We define \(\phi(n) : \mathbb{Z}/m_1m_2\mathbb{Z} \rightarrow \mathbb{Z}/m_1\mat
     \end{itemize}
 \end{enumerate}
 
-Do the same for \( \circ \).
+
+\paragraph{(note) Fields}:  Fields are commutative. They have two operations, addition and multiplication. Every non-zero element in a field has a multiplicative and additive inverse. (e.g., \(\mathbb{Z}/p\mathbb{Z}\) is a field ($m$ has to be prime because every element needs a multiplicative inverse), but also infinite fields like \(\mathbb{Q}\) or \(\mathbb{R}\)).
+
+\paragraph{(note) Finite (or Galois) Field Fields}: Fields are commutative. They have two operations, addition and multiplication. Every non-zero element in a field has a multiplicative and additive inverse. E.g., \(\mathbb{Z}/p\mathbb{Z}\) is a field ($p$ has to be prime because every element needs a multiplicative inverse)). $F_p$ is isomorphic to $\mathbb{Z}/p\mathbb{Z}$.
+
+see https://www.youtube.com/watch?v=yBVqk4YM2VY
+
+\paragraph{(note)  characteristics}: the characteristic of a field is the smallest positive integer \( n \) such that \( n \cdot 1 = 0 \). If no such integer exists, the field has characteristic 0. (e.g. \(F_9\) has characteristic 3
+
+\paragraph{Cyclic Groups}: a group is cyclic if there exists an element \( g \) in the group such that every element in the group can be written as a power of \( g \). The order of a cyclic group is the number of elements in the group.
 
 \paragraph{Method: Checking if a Group \( G(\{a, b, c\}, \star) \) is Isomorphic to \( H(\{e, f, g\}, \circ) \)}
 
@@ -438,6 +449,15 @@ Because we do not want to send too much data (sending the plaintext twice!), we 
 \newpage
 
 \section{Channel coding}
+
+\paragraph{Linear code} is a subspace of \( \mathbb{F}^n \) (a vector space).
+
+\paragraph{Generating matrix} is a matrix that, when multiplied by a message, gives the codeword. It is a \( k \times n \) matrix. We can build it by taking \( k \) linearly independent codewords (as we know from algebra, any \( k \) linearly independent vectors can generate a \( k \) dimensional space).
+
+\paragraph{Generating matrix for systematic code} is a matrix that has the identity matrix as its first \( k \) columns. It is very useful to build a parity-check matrix.\\\\
+When we don't have a systematic code, we can always transform it into one by using the Gauss-Jordan elimination method (then no need to update the parity-check matrix), or by swapping the columns of the generating matrix (then we need to also swap the columns of the parity-check matrix).
+
+\paragraph{Parity-check matrix} is a matrix that, when multiplied by a codeword, gives us a syndrome (that is 0 if the codeword is correct).
 
 \paragraph{bit-rate}: $\frac{log_D(M)}{n}$, D is the size of the alphabet, M is the number of codes in the codebook, n is the size of the codes in the codebook
 \paragraph{Singleton's bound} $d_{\text{min}} \leq n - k + 1$ (make sure to use the right D, the size of the alphabet)
