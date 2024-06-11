@@ -471,4 +471,28 @@ Let \( p \) be the maximum weight, the maximum number of errors we can make.
     \item Correction: \( p < \frac{d_{\text{min}}}{2} \) (we must stay within the ball of a code)
 \end{itemize}
 
+\paragraph{Reed-Solomon codes} are a family of MDS codes. They are defined by a generator polynomial. It goes from \( \mathbb{F}^k \) to \( \mathbb{F}^n \), where \( n \) is the size of the codewords. The generator polynomial is a polynomial of degree \( k - 1 \).
+
+\begin{itemize}
+    \item Select \( a_1, a_2, ..., a_k \) in \( \mathbb{F} \)
+    \item Select your message \( u_1, u_2, ..., u_k \)
+    \item Create a polynomial \( u(x) = u_1 + u_2x + ... + u_kx^{k-1} \)
+    \item Evaluate this polynomial at \( a_1, a_2, ..., a_n \) to get the codeword
+    \item Then, when you want to recover the message, you can use the Lagrange interpolation method, and from \( k \) points, you can recover the polynomial.
+\end{itemize}
+
+\paragraph{Method: create a polynomial that goes through \( k \) points}
+
+$f(a_1) = 1$
+$f(a_2) = 2$
+$f(a_3) = 3$
+
+\begin{itemize}
+    \item $ \frac{(x - a_2)(x - a_3)}{(a_1 - a_2)(a_ - a_3)} \cdot 1 $
+    \item + $ \frac{(x - a_1)(x - a_3)}{(a_2 - a_1)(a_2 - a_3)} \cdot 2 $
+    \item + $ \frac{(x - a_1)(x - a_2)}{(a_3 - a_1)(a_2 - a_1)} \cdot 3 $
+\end{itemize}
+
+so it cancels all the other terms except the one we want to keep.
+
 \end{document}
