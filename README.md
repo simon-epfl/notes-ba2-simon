@@ -14,7 +14,8 @@ Mes notes/fiches de cours de BA1 à l'EPFL. Ce dossier me sert d'archives pour l
 
 ### Prise de notes
 
-N/A.
+* [Mémo sur le cours (méthode et théorie)](./analyse/analyse-tricks.pdf)
+* [Rédaction des démonstrations avec explications](./analyse/demos.pdf)
 
 ### Corrigés/Rédaction des séries d'exercices
 
