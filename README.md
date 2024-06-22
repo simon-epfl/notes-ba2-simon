@@ -10,15 +10,6 @@ Mes notes/fiches de cours de BA1 à l'EPFL. Ce dossier me sert d'archives pour l
 
 ### Corrigés/Rédaction des séries d'exercices
 
-## Analyse
-
-### Prise de notes
-
-* [Mémo sur le cours (méthode et théorie)](./analyse/analyse-tricks.pdf)
-* [Rédaction des démonstrations avec explications](./analyse/demos.pdf)
-
-### Corrigés/Rédaction des séries d'exercices
-
 * [Rédaction de la série 1](./aicc/series/AICC%20-%20Week%201.pdf)
 * [Rédaction de la série 2](./aicc/series/AICC%20-%20Week%202.pdf)
 * [Rédaction de la série 3](./aicc/series/AICC%20-%20Week%203.pdf)
@@ -45,6 +36,30 @@ Mes notes/fiches de cours de BA1 à l'EPFL. Ce dossier me sert d'archives pour l
 ### Autres
 
 * [Script calcul de crypto](./aicc/aicc-crypto.js)
+
+## Analyse
+
+### Prise de notes
+
+* [Mémo sur le cours (méthode et théorie)](./analyse/analyse-tricks.pdf)
+* [Rédaction des démonstrations avec explications](./analyse/demos.pdf)
+
+### Corrigés/Rédaction des séries d'exercices
+
+* [Rédaction de la série 1](./analyse/series/Analyse%20-%20Week%201.pdf)
+* [Rédaction de la série 2](./analyse/series/Analyse%20-%20Week%202.pdf)
+* [Rédaction de la série 3](./analyse/series/Analyse%20-%20Week%203.pdf)
+* [Rédaction de la série 4](./analyse/series/Analyse%20-%20Week%204.pdf)
+* [Rédaction de la série 5](./analyse/series/Analyse%20-%20Week%205.pdf)
+* [Rédaction de la série 6](./analyse/series/Analyse%20-%20Week%206.pdf)
+* [Rédaction de la série 7](./analyse/series/Analyse%20-%20Week%207.pdf)
+* [Rédaction de la série 8](./analyse/series/Analyse%20-%20Week%208.pdf)
+* [Rédaction de la série 9](./analyse/series/Analyse%20-%20Week%209.pdf)
+* [Rédaction de la série 10](./analyse/series/Analyse%20-%20Week%2010.pdf)
+* [Rédaction de la série 11](./analyse/series/Analyse%20-%20Week%2011.pdf)
+* [Rédaction de la série 12](./analyse/series/Analyse%20-%20Week%2012.pdf)
+* [Rédaction de la série 13](./analyse/series/Analyse%20-%20Week%2013.pdf)
+* [Rédaction de la série 14](./analyse/series/Analyse%20-%20Week%2014.pdf)
 
 ## Programmation
 
