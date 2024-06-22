@@ -66,3 +66,9 @@ N/A.
 * [Rédaction de la série 9](./prog/series/serie09-steg/)
 * [Rédaction de la série 10](./prog/series/serie10-stat/)
 * [Rédaction de la série 11](./prog/series/serie11-lzw1/)
+
+## SHS
+
+### Prise de notes
+
+* [Mémo sur le cours](./shs/cours.pdf)
