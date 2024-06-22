@@ -121,6 +121,7 @@ N/A.
 ### Prise de notes
 
 * [Mémo sur le cours](./shs/cours.pdf)
+* [Poster du rendu final](./shs/poster.pdf)
 
 ## C++ Chappelier
 
