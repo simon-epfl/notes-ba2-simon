@@ -87,8 +87,8 @@ N/A.
 
 ### Prise de notes
 
-* [Mémo sur le cours (jusqu'au midterm)](./fds/cours.pdf)
-* [Mémo sur le cours (du midterm au final)](./fds/cours.pdf)
+* [Mémo sur le cours (jusqu'au midterm)](./fds/fds-tricks-1.pdf)
+* [Mémo sur le cours (du midterm au final)](./fds/fds-tricks-2.pdf)
 * [Mémo sur Verilog](./fds/guide_verilog.pdf)
 
 ### Projets
