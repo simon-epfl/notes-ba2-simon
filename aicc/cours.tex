@@ -102,7 +102,7 @@ with equality iff $ S_1,...,S_n $ are independent. Seems "intuitive" because the
 
 \paragraph{Kraft-McMillan theorem} Let $ I_1, ..., I_m $ be the respective codewords lengths.\\
 \[ \text{D-ary code uniquely decodable} \implies D^{-I_1} + ... + D^{-I_m} \leq 1 \]
-(intuition: comes from the number of used leaves)
+(intuition: comes from the number of used leaves. if there is an equality (=1) then exactly all the leaves we have at our disposal are used, which is great)
 
 \paragraph{Kraft-McMillan theorem 2} if the positive integers $ I_1, ..., I_m $ satisfy the Kraft's inequality for some integer $ D $, there exists a D-ary prefix-free code.\\
 To build it, draw a tree and order codewords lengths in increasing order.
@@ -193,12 +193,12 @@ therefore:
 
 \paragraph{Entropy rate} à quel point quand on ajoute une lettre à notre code ça fait descendre vers l'avg code length vers l'entropie ?
 
-\paragraph{Sunny-Rain source} probability of next symbol only depends on the previous one
+\paragraph{Sunny-Rainy source} probability of next symbol only depends on the previous one
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.75\linewidth]{sunnyrain.png}
-    \caption{Enter Caption}
+    \caption{Sunny Rainy source}
     \label{fig:enter-label}
 \end{figure}
 
@@ -216,7 +216,17 @@ exist and are finite.
 For regular sources:
 \[ H^{*}(\mathbb{S}) = \lim_{n\to\infty} \frac{H(S_1,...,S_n)}{n} \]
 
-\paragraph{Stationary source} if statistics, probabilities never change over time.
+\pagebreak
+
+\paragraph{Stationary source} if statistics, probabilities never change over time. $ p_{S_1,...,S_n} = p_{S_1,...,S_{n-1}} $ and $ p_{S_1,...,S_n} = p_{S_2,...,S_{n+1}} $, etc.
+The initial distribution has to be uniform, for instance, you can enter State A or State B with a coin flip.
+
+\begin{figure}{h}
+    \centering
+    \includegraphics[width=1\linewidth]{stationary.jpg}
+    \caption{Stationary source}
+    \label{fig:enter-label}
+\end{figure}
 
 \paragraph{Known bounds on factorial}
 
@@ -344,12 +354,11 @@ or use $ [b]_m^{\phi(m) -1} $
 Any integer $p$ that also satifies this is a multiple of the order of $a$. The order of a must divide the number of elements in the commutative group G.
 
 \paragraph{Generator} recall the fact that for Diffie Hellman we needed to pick a generator (a number such that when you exponentiate then modulo reduce, it gives you all the elements of the group). It is now clear to see that we should pick a number of the group with the order equal to $n$!\\\\
-If we have a generator $g$ and an index $i$, on peut retrouver l'ordre de l'élément $g^i$ in the cyclic group: $ord(g^i) = \frac{ord(g)}{gcd(ord(g), i)}$
+If we have a generator $g$ and an index $i$, we can find the order of the element $g^i$ in the cyclic group: $ord(g^i) = \frac{ord(g)}{gcd(ord(g), i)}$
 
 \paragraph{Isomorphism} two groups are isomorphic if they have the same set of orders.
 
-\paragraph{Cyclic groups} have a generator (for instance Z,Z5)
-$\{ g, g^2, g^3, .., g^G = e \}$, G being the number of elements in the group. Otherwise if $ < $ G, then we do not get all the elements in the group
+\paragraph{Cyclic groups} have one or several generators. For instance if $g$ is a generator, and $a, b, c, d, e, f, etc.$ with $e$ the identity then it could be $\{ g = a, g^2 = d, g^3 = b, .., g^G = e \}$, G being the number of elements in the group. Otherwise as soon as we get the identity and the exponent is not the cardinality of the group, then we can conclude that $g$ is a not a generator. There are $\phi(G)$ generators in a cyclic group of order $G$ (\textbf{always check whether a group is a cyclic group (which means you need to find at least one generator) before using the previous formula}).
 
 \subsubsection{Method: CRT}
 
@@ -365,6 +374,13 @@ To fill it more quickly, think about the diagonals.
 Here we see that if we have a number congruent to 3 modulo 7 and congruent to 1 modulo 5, then it will be congruent to 31 modulo 35.\\\\
 We define \(\phi(n) : \mathbb{Z}/m_1m_2\mathbb{Z} \rightarrow \mathbb{Z}/m_1\mathbb{Z} \times \mathbb{Z}/m_2\mathbb{Z}\) as the function that, for a certain \( n \) in the table, gives the modulos in the two other lands.
 \(\phi^{-1}(a, b)\), on the contrary, gives us back the two modulos in the original lands.
+
+\paragraph{Reverse CRT} We know that \( x \equiv k_1 \mod m_1 \) and \( x \equiv k_2 \mod m_2 \). We can compute \( x \equiv ? \mod m_1 m_2 \) by:
+\begin{itemize}
+    \item Compute $u, v$ s.t. $u \cdot m_1 + v \cdot m_2 = 1$
+    \item Let's say $ a = u \cdot m_1, b = v \cdot m_2 $
+    \item Then, $ x = k_1 \cdot a + k_2 \cdot b \mod m_1 m_2 $
+\end{itemize}
 
 \subsubsection{Commutative Groups}
 
@@ -386,11 +402,10 @@ We define \(\phi(n) : \mathbb{Z}/m_1m_2\mathbb{Z} \rightarrow \mathbb{Z}/m_1\mat
 
 \paragraph{(note) Fields}:  Fields are commutative. They have two operations, addition and multiplication. Every non-zero element in a field has a multiplicative and additive inverse. (e.g., \(\mathbb{Z}/p\mathbb{Z}\) is a field ($m$ has to be prime because every element needs a multiplicative inverse), but also infinite fields like \(\mathbb{Q}\) or \(\mathbb{R}\)).
 
-\paragraph{(note) Finite (or Galois) Field Fields}: Fields are commutative. They have two operations, addition and multiplication. Every non-zero element in a field has a multiplicative and additive inverse. E.g., \(\mathbb{Z}/p\mathbb{Z}\) is a field ($p$ has to be prime because every element needs a multiplicative inverse)). $F_p$ is isomorphic to $\mathbb{Z}/p\mathbb{Z}$.
-
+\paragraph{(note) Finite (or Galois) Field Fields}: Fields are commutative. They have two operations, addition and multiplication. Every non-zero element in a field has a multiplicative and additive inverse. E.g., \(\mathbb{Z}/p\mathbb{Z}\) is a field ($p$ has to be prime because every element needs a multiplicative inverse)). $F_p$ is isomorphic to $\mathbb{Z}/p\mathbb{Z}$.\\\\
 see https://www.youtube.com/watch?v=yBVqk4YM2VY
 
-\paragraph{(note)  characteristics}: the characteristic of a field is the smallest positive integer \( n \) such that \( n \cdot 1 = 0 \). If no such integer exists, the field has characteristic 0. (e.g. \(F_9\) has characteristic 3
+\paragraph{(note)  characteristics}: the characteristic of a field is the smallest positive integer \( n \) such that \( n \cdot 1 = 0 \). If no such integer exists, the field has characteristic 0. (e.g. \(F_9\) has characteristic 3).
 
 \paragraph{Cyclic Groups}: a group is cyclic if there exists an element \( g \) in the group such that every element in the group can be written as a power of \( g \). The order of a cyclic group is the number of elements in the group.
 
@@ -430,13 +445,9 @@ The problem is that it takes a long time to do this. We can calculate it faster 
 \[
 k = \mathrm{lcm}(p - 1, q - 1)
 \]
-This way, we just need to set \( e \cdot d \equiv 1 \pmod{k} \), see condition (1).\\
-Why does it work? \(\mathrm{lcm}(p - 1, q-1)\) is a divisor of \((p-1)(q-1) = \Phi(m)\) (it is the smallest number that can be divided by both).\\\\
-For example:
-\[
-10 \cdot 60 = 160 = 2^5 \cdot 5 \quad \mathrm{lcm}(10, 60) = 2^4 \cdot 5
-\]
-So if \( e \cdot d \equiv 1 \pmod{k} \), it means that it is also \( e \cdot d \equiv 1 \pmod{\Phi(m)} \).\\\\
+This way, we just need to set \( e \cdot d \equiv 1 \pmod{k} \), see condition (1).\\\\
+\textbf{Be aware (really need to be known for the exam): this d does not necessarily give 1 mod \(\Phi(m)\), but it is still a valid d. This means when asked for a valid (e, d), you have to try mod mod phi and if it does not work, it is probably a good idea to try mod lcm! (see exam 2022 Q12)}\\\\
+Why does it work? We prove it using the Chinese Theorem (proof slide 548).\\\\
 Similarly, the number used for encoding must be coprime with \( k \).\\\\
 
 \newpage
