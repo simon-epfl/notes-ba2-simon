@@ -37,7 +37,7 @@ Mes notes/fiches de cours de BA2 à l'EPFL. Ce dossier me sert d'archives pour l
 
 * [Script calcul de crypto](./aicc/aicc-crypto.js)
 
-## Analyse
+## Analyse II
 
 ### Prise de notes
 
