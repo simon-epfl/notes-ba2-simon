@@ -1,0 +1,3 @@
+[submodule "prog/ChaCuN"]
+	path = prog/ChaCuN
+	url = https://github.com/simon-valerio-epfl/ChaCuN
