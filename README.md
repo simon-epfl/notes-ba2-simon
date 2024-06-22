@@ -83,6 +83,39 @@ N/A.
 * [Rédaction de la série 10](./prog/series/serie10-stat/)
 * [Rédaction de la série 11](./prog/series/serie11-lzw1/)
 
+## FDS
+
+### Prise de notes
+
+* [Mémo sur le cours (jusqu'au midterm)](./fds/cours.pdf)
+* [Mémo sur le cours (du midterm au final)](./fds/cours.pdf)
+* [Mémo sur Verilog](./fds/guide_verilog.pdf)
+
+### Projets
+
+* [Exercices et circuits Logisim](./fds/logisim/)
+* [Exercices et programmes Verilog](./fds/verilog/)
+* [Exercices et programmes RISC-V](./fds/risc-v/)
+
+### Séries d'exercices
+
+* [Rédaction de la série 1](./fds/series/FDS%20-%20Week%201.pdf)
+* [Rédaction de la série 2](./fds/series/FDS%20-%20Week%202.pdf)
+* [Rédaction de la série 3](./fds/series/FDS%20-%20Week%203.pdf)
+* [Rédaction de la série 4 (partie 1)](./fds/series/FDS%20-%20Week%204.pdf)
+* [Rédaction de la série 4 (partie 2)](./fds/series/FDS%20-%20Week%204%20(2).pdf)
+* [Rédaction de la série 5](./fds/series/FDS%20-%20Week%205.pdf)
+* [Rédaction de la série 6](./fds/series/FDS%20-%20Week%206.pdf)
+* [Rédaction de la série 8](./fds/series/FDS%20-%20Week%208.pdf)
+* [Rédaction de la série 9](./fds/series/FDS%20-%20Week%209.pdf)
+* [Rédaction de la série 10 (partie 1)](./fds/series/FDS%20-%20Week%2010.pdf)
+* [Rédaction de la série 10 (partie 2)](./fds/series/FDS%20-%20Week%2010%20(2).pdf)
+* [Rédaction de la série 11](./fds/series/FDS%20-%20Week%2011.pdf)
+* [Rédaction de la série 12](./fds/series/FDS%20-%20Week%2012.pdf)
+* [Rédaction de la série 13](./fds/series/FDS%20-%20Week%2013.pdf)
+* [Rédaction de la série 14](./fds/series/FDS%20-%20Week%2014.pdf)
+* [Rédaction de la série exo bonus midterm](./fds/series/FDS%20-%20Bonus.pdf)
+
 ## SHS
 
 ### Prise de notes
