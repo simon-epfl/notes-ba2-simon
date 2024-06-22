@@ -121,3 +121,7 @@ N/A.
 ### Prise de notes
 
 * [Mémo sur le cours](./shs/cours.pdf)
+
+## C++ Chappelier
+
+* [Séries d'exercices (PH BA2)](./cpp-chappelier/)
