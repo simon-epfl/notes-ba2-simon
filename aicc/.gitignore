@@ -1,0 +1,10 @@
+cours.aux
+cours.log
+cours.fls
+cours.fdb_latexmk
+cours.synctex.gz
+!cours.tex
+!*.png
+!cours.pdf
+!aicc-crypto.js
+!series
