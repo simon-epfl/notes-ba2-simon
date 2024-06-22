@@ -54,7 +54,7 @@ N/A.
 
 ### Formulaire pour l'examen final
 
-* [Formulaire](./prog/formulaire.pdf)
+* [Formulaire pour l'examen final](./prog/formulaire.pdf)
 
 ### Corrigés/Rédaction des séries d'exercices
 
