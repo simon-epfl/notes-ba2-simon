@@ -153,6 +153,13 @@ pour les NOR : écrire la Product of Sums (elle n'a pas besoin d'être une full 
 
 ne pas oublier qu'on peut créer un inverter en mettant en chaîne deux NAND ou deux NOR, donc on peut toujours obtenir un OR ou un AND avec des NAND ou des NOR.
 
+== Checklist verilog
+
+- ne pas oublier de déclarer en `reg` quand on fait du combinatoire
+- le `case` n'a pas de `begin` ni de point-virgule mais un `endcase`
+- ne pas oublier de faire des cas par défaut dans les `case`
+- ne pas oublier la syntaxe `always @(variable1 or variable2)` (exécuté quand une des deux variables *change*) ou `always @(*)`
+
 #pagebreak()
 
 == Un peu de cours
@@ -170,4 +177,4 @@ ne pas oublier qu'on peut créer un inverter en mettant en chaîne deux NAND ou 
 - range : the difference between the most positive and the most negative number representable
 - accuracy : the magnitude of the maximum difference between a real value and its representation
 - dynamic range : ratio of the max absolute value representable an the minimum non-zero positive value representable
-- quand on additionne deux nombres en floating point, on garde l'exposant le plus grand (et on modifie la mantisse du plus petit pour qu'il ait le même exposant), pour minimiser l'erreur *note: c'est le même fonctionnement pour le block floating point!*.
+- quand on additionne deux nombres en floating point, on garde l'exposant le plus grand (et on modifie la mantisse du plus petit pour qu'il ait le même exposant), pour minimiser l'erreur *note: c'est le même fonctionnement pour le block floating point!*
