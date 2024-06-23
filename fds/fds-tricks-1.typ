@@ -157,8 +157,10 @@ ne pas oublier qu'on peut créer un inverter en mettant en chaîne deux NAND ou 
 
 - ne pas oublier de déclarer en `reg` quand on fait du combinatoire
 - le `case` n'a pas de `begin` ni de point-virgule mais un `endcase`
-- ne pas oublier de faire des cas par défaut dans les `case`
+- ne pas oublier de faire un cas `default` dans les `case`
+- ne pas oublier d'attribuer des valeurs par défaut aux variables modifiées en haut de tous les blocs `always`
 - ne pas oublier la syntaxe `always @(variable1 or variable2)` (exécuté quand une des deux variables *change*) ou `always @(*)`
+
 
 #pagebreak()
 
