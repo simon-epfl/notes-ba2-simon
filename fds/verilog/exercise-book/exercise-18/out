@@ -1,0 +1,65 @@
+#! /usr/local/bin/vvp
+:ivl_version "13.0 (devel)" "(s20221226-513-gef7f0a8f3)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/local/lib64/ivl/system.vpi";
+:vpi_module "/usr/local/lib64/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/local/lib64/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/local/lib64/ivl/v2005_math.vpi";
+:vpi_module "/usr/local/lib64/ivl/va_math.vpi";
+S_0x1ba9140 .scope module, "test_structural_example" "test_structural_example" 2 1;
+ .timescale 0 0;
+v0x1bf4820_0 .var "a", 0 0;
+v0x1bf48e0_0 .var "b", 0 0;
+v0x1bf49b0_0 .var "c", 0 0;
+v0x1bf4ab0_0 .net "f", 0 0, L_0x1bf4d80;  1 drivers
+v0x1bf4b80_0 .var/i "i", 31 0;
+S_0x1ba92d0 .scope module, "ex" "structural_example" 2 9, 3 1 0, S_0x1ba9140;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /INPUT 1 "c";
+    .port_info 3 /OUTPUT 1 "f";
+L_0x1bf4c70 .functor AND 1, v0x1bf4820_0, v0x1bf48e0_0, C4<1>, C4<1>;
+L_0x1bf4d80 .functor OR 1, L_0x1bf4c70, v0x1bf49b0_0, C4<0>, C4<0>;
+v0x1ba94b0_0 .net "a", 0 0, v0x1bf4820_0;  1 drivers
+v0x1bf4440_0 .net "b", 0 0, v0x1bf48e0_0;  1 drivers
+v0x1bf4500_0 .net "c", 0 0, v0x1bf49b0_0;  1 drivers
+v0x1bf45d0_0 .net "f", 0 0, L_0x1bf4d80;  alias, 1 drivers
+v0x1bf4690_0 .net "p", 0 0, L_0x1bf4c70;  1 drivers
+    .scope S_0x1ba9140;
+T_0 ;
+    %vpi_call 2 15 "$dumpfile", "structural_example.vcd" {0 0 0};
+    %vpi_call 2 16 "$dumpvars" {0 0 0};
+    %vpi_call 2 18 "$monitor", "Time %2t, a=%b, b=%b, c=%b, f=%b", $time, v0x1bf4820_0, v0x1bf48e0_0, v0x1bf49b0_0, v0x1bf4ab0_0 {0 0 0};
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x1bf4b80_0, 0, 32;
+T_0.0 ; Top of for-loop
+    %load/vec4 v0x1bf4b80_0;
+    %cmpi/s 8, 0, 32;
+    %jmp/0xz T_0.1, 5;
+    %load/vec4 v0x1bf4b80_0;
+    %pad/s 3;
+    %split/vec4 1;
+    %store/vec4 v0x1bf49b0_0, 0, 1;
+    %split/vec4 1;
+    %store/vec4 v0x1bf48e0_0, 0, 1;
+    %store/vec4 v0x1bf4820_0, 0, 1;
+    %delay 1, 0;
+T_0.2 ; for-loop step statement
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v0x1bf4b80_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %store/vec4 v0x1bf4b80_0, 0, 32;
+    %jmp T_0.0;
+T_0.1 ; for-loop exit label
+    %vpi_call 2 30 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "test_structural_example.v";
+    "structural_example.v";

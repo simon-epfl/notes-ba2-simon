@@ -180,7 +180,7 @@ endmodule
 
 Pour savoir comment tester ce circuit, allez voir la @testbench
 
-Tout fonctionne bien, mais... si on connaît l'expression booléenne derrière ce circuit, l'écrire en Verilog structurel très long inutilement.
+Tout fonctionne bien, mais... si on connaît l'expression booléenne derrière ce circuit, l'écrire en Verilog structurel est très long inutilement.
 
 == Le Verilog d'affectation continue
 
