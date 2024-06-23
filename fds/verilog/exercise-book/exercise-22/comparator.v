@@ -3,12 +3,12 @@ module comparator(
     output reg A_eq_B, A_gt_B, A_lt_B
 );
 
-always @(*) begin
+    always @(*) begin
 
-    A_eq_B = A == B;
-    A_lt_B = A < B;
-    A_gt_B = A > B;
+        A_eq_B = A == B;
+        A_lt_B = A < B;
+        A_gt_B = A > B;
 
-end
+    end
 
 endmodule

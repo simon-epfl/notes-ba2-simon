@@ -6,8 +6,6 @@ module gray_encoder (
 
 always @(*) begin
 
-    out = 
-
     if (!select) out = binary_in;
     else begin
 
