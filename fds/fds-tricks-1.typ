@@ -48,7 +48,7 @@ On s'approche très près de n'importe quel nombre avec la table de 16. On écri
   "10", "160",
 )
 
-== Convertir de Gray Code <=> Binary
+== Convertir de Gray Code #sym.arrow.r.l.double Binary
 
 Binary vers Gray Code : \
 #sym.arrow on copie le MSB, puis on XOR chaque couple de bits qui suit.
@@ -112,7 +112,7 @@ pour passer d'une SOP à une POS, double négation, puis développement, puis ap
 == Comment comparer rapidement deux expressions
 
 - si on a les minterms (les S.O.P), on peut les numéroter en fonction des termes positifs (par ex. ab(!c) représente 110, 6).
-- si on a les maxterms (les P.O.S), on peut aussi les numéroter en fontion des termes négatifs (par ex. ab(!c) représente 001, 1).
+- si on a les maxterms (les P.O.S), on peut aussi les numéroter en fonction des termes négatifs (par ex. ab(!c) représente 001, 1).
 Pour passer de maxterms M1, M4 à la liste des minterms, on prend les complément (m0, m2, m3, m5, etc.).
 
 == Comprendre les delays et les fan-in/fan-out
@@ -135,15 +135,23 @@ $ (a+b)(b+c)(overline(a) + overline(c)) \
   equiv (a+b+overline(c))(overline(a) + b + c)(a + b + c)(overline(a) + overline(b) + overline(c))(overline(a) + b + overline(c))
 $
 
+*ça donne une technique très simple pour obtenir une full P.O.S.* : quand on a $ (a + b) equiv (a + b + overline(c))(a + b + c) $
+
 == Arrondir rapidement en floating point
 
 On écrit la mantisse avec un bit de plus. On ajoute +1. On prend le résultat tronqué.
 
-== Faire la diff entre un nombre de la forme X00000 - 67833
+== Addition/Soustraction en floating point
 
-On fait -1 au X, puis 9 - 6, 9 - 7, 9 - 8, 9 - 3, *10* - 3!
+On aligne les exposants. On additionne les mantisses *en n'oubliant surtout pas de faire toujours apparaître le hidden bit!* On normalise.
 
-(X-1)32167I think you're correct, good luck for the exam ^^
+== Convertir un circuit en NAND et NOR
+
+pour les NAND : écrire la Sum of Products (elle n'a pas besoin d'être une full SOP!), puis appliquer 2 fois la De Morgan.
+
+pour les NOR : écrire la Product of Sums (elle n'a pas besoin d'être une full POS!), puis appliquer 2 fois la De Morgan.
+
+ne pas oublier qu'on peut créer un inverter en mettant en chaîne deux NAND ou deux NOR, donc on peut toujours obtenir un OR ou un AND avec des NAND ou des NOR.
 
 #pagebreak()
 
@@ -162,3 +170,4 @@ On fait -1 au X, puis 9 - 6, 9 - 7, 9 - 8, 9 - 3, *10* - 3!
 - range : the difference between the most positive and the most negative number representable
 - accuracy : the magnitude of the maximum difference between a real value and its representation
 - dynamic range : ratio of the max absolute value representable an the minimum non-zero positive value representable
+- quand on additionne deux nombres en floating point, on garde l'exposant le plus grand (et on modifie la mantisse du plus petit pour qu'il ait le même exposant), pour minimiser l'erreur *note: c'est le même fonctionnement pour le block floating point!*.
