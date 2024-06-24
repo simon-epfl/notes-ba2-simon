@@ -1,7 +1,7 @@
 module lfsr(
-    input [0:2] seed,
+    input [2:0] seed,
     input clk, load, reset,
-    output reg [0:2] out
+    output reg [2:0] out
 );
 
 always @(posedge clk or posedge reset) begin

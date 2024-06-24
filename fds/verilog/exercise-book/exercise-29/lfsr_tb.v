@@ -1,8 +1,8 @@
 module lfsr_tb;
 
-reg [0:2] binary_initial = 3'b000;
+reg [2:0] binary_initial = 3'b000;
 reg clk = 0;
-wire [0:2] out;
+wire [2:0] out;
 reg reset = 1;
 reg load = 1;
 

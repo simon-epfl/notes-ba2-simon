@@ -1,0 +1,4 @@
+module updowncounter();
+
+
+endmodule

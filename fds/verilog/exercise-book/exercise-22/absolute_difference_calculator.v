@@ -1,5 +1,5 @@
 module absolute_difference_calculator(
-    input [0:4] A, B,
+    input [4:0] A, B,
     output result
 );
 

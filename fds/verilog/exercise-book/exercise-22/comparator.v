@@ -1,5 +1,5 @@
 module comparator(
-    input [0:4] A, B,
+    input [4:0] A, B,
     output reg A_eq_B, A_gt_B, A_lt_B
 );
 
