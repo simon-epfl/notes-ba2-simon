@@ -29,6 +29,8 @@
 
 #pagebreak()
 
+== Setup and Hold times
+
 Valerio se tourne, va chercher un stylo chez Habib, et se retourne vers moi. Je prends le stylo toutes les 5 secondes #sym.arrow *clock !* et :
 - j'ai besoin de voir le stylo 2s avant de commencer à le prendre (le moment où je vais arriver à 0 mod 5s) #sym.arrow *t_setup !* Cette condition est violée si je vais trop vite (la clock est trop rapide), que Valerio a pas le temps de me montrer le stylo. Soit Valerio doit aller plus vite (on diminue le *t_comb*), soit on doit me ralentir (on dominue le *clock*).
 - je mets 1s à prendre le stylo *t_hold !* Cette condition est violée si Valerio va chercher un autre stylo chez Habib trop vite.
@@ -45,3 +47,9 @@ $t_c Q_max + t_"comb" + t_"setup" + t_"skew_du_FF_A" - t_"skew_du_FF_B" = "delay
 Vérifier le hold:
 
 $t_c Q_min + t_"comb" + t_"skew_du_FF_A" - t_"skew_du_FF_B" = "delay" $
+
+#image("metastability.png")
+
+https://www.youtube.com/watch?v=xCA54Qu4WtQ
+
+#image("setup.png")

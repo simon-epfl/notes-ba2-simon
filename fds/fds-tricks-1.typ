@@ -180,3 +180,17 @@ ne pas oublier qu'on peut créer un inverter en mettant en chaîne deux NAND ou 
 - accuracy : the magnitude of the maximum difference between a real value and its representation
 - dynamic range : ratio of the max absolute value representable an the minimum non-zero positive value representable
 - quand on additionne deux nombres en floating point, on garde l'exposant le plus grand (et on modifie la mantisse du plus petit pour qu'il ait le même exposant), pour minimiser l'erreur *note: c'est le même fonctionnement pour le block floating point!*
+
+#pagebreak()
+
+=== À quoi servent les tristate buffers?
+
+Quand on a un bus de données (c'est à dire une sorte de voie sur laquelle des modules peuvent se connecter), on veut que ceux-ci puissent lire et écrire dedans. Sauf qu'on doit décider qui peut écrire à un moment donné, ils ne peuvent pas tous écrire en même temps :
+
+#image("tristate.png")
+
+Les tristate buffers permettent de résoudre ce problème. Ils ont 3 états : 0, 1, et Z (pour high impedance). Quand le tristate est à Z, il est déconnecté du bus (partie écriture), et les autres modules peuvent écrire dessus. Quand il est à 0 ou 1, il peut écrire sur le bus. (voir https://www.youtube.com/watch?v=_3cNcmli6xQ)
+
+versus implémentation MUX (beaucoup moins propre) :
+
+#image("mux.png", width: 95%)
