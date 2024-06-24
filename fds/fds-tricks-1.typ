@@ -160,6 +160,7 @@ ne pas oublier qu'on peut créer un inverter en mettant en chaîne deux NAND ou 
 - ne pas oublier de faire un cas `default` dans les `case`
 - ne pas oublier d'attribuer des valeurs par défaut aux variables modifiées en haut de tous les blocs `always`
 - ne pas oublier la syntaxe `always @(variable1 or variable2)` (exécuté quand une des deux variables *change*) ou `always @(*)`
+- ne pas oublier qu'on fait `[4:0]` pour déclarer un input à *5 variables* et pas `[0:5]` (mauvais sens + un bit de trop)
 
 
 #pagebreak()
