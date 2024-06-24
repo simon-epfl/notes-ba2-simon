@@ -1,4 +1,1 @@
-module updowncounter();
-
-
-endmodule
+// done on paper
