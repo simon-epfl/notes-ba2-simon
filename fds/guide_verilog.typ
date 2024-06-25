@@ -438,7 +438,7 @@ gtkwave structural_example.vcd
 
 == Compléments
 
-Que se passe-t-il si on déclarer un input avec une taille "inversée" ?
+=== Que se passe-t-il si on déclarer un input avec une taille "inversée" ?
 
 `[0:2] au lieu de [2:0]`
 
@@ -456,3 +456,41 @@ module test (
 endmodule;
 ```)
 
+=== Différence entre double et triple égalité
+
+#stick-together(```verilog
+module test;
+
+reg a = 1'bz;
+reg b = 1'bz;
+
+  initial begin
+
+    (a == b) // false!
+    (a === b) // true!
+    // this is because by default you should not compare unknown values together but during simulation it can be useful
+
+  end
+
+endmodule;
+```)
+
+
+=== Différence entre double et triple égalité
+
+#stick-together(```verilog
+module test;
+
+reg a = 1'bz;
+reg b = 1'bz;
+
+  initial begin
+
+    (a == b) // false!
+    (a === b) // true!
+    // this is because by default you should not compare unknown values together but during simulation it can be useful
+
+  end
+
+endmodule;
+```)

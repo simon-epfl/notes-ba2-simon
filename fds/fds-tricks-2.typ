@@ -20,6 +20,17 @@
 - next-state update (en always \@\(posedge clock\) avec gestion du reset).
 - output update (en always \@\*).
 
+== Trouver la fréquence maximale
+
+- calculer tous les temps $t_"setup" + t_"comb"_"max" + t_"cQ"_"max"$ pour chaque chemin entre deux flip-flops.
+- prendre le plus grand temps.
+- calculer la fréquence maximale : $f_"max" = 1 / t_"max"$.
+
+== Vérifier les hold violations
+
+- calculer tous les temps $t_"comb"_"min" + t_"cQ"_"min"$ pour chaque chemin entre deux flip-flops
+- comparer avec $t_"hold"$
+
 #pagebreak()
 
 == Cours
