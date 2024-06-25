@@ -91,3 +91,16 @@ https://www.youtube.com/watch?v=xCA54Qu4WtQ
 == Clock Skew
 
 différence de temps entre le moment où la clock se déclenche pour le flip flop 1 et le flip flop 2. si le skew est positif, c'est cool ! on a plus de temps pour faire les calculs. si le skew est négatif, c'est moins cool, on a moins de temps pour faire les calculs.
+
+== Memory
+
+Il y a deux MUX : un pour activer l'écriture au bon endroit (qui ne s'active que quand `WE` est vrai), un pour choisir ce qui sort.
+
+#image("dffp.png")
+
+=== Memory dans Verilog
+
+`reg [nombre-de-bits-par-word-1:0] nom-de-la-variable [nombre-de-words-1:0];`
+
+#image("verilog-db.png", width: 50%)
+#image("verilog-db-schema.png", width: 40%)
