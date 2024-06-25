@@ -14,6 +14,12 @@
 
 = Tricks de FDS (part II)
 
+== FSM en Verilog
+
+- next-state logic (en always \@\*).
+- next-state update (en always \@\(posedge clock\) avec gestion du reset).
+- output update (en always \@\*).
+
 #pagebreak()
 
 == Cours
@@ -32,8 +38,22 @@
 
 == Setup and Hold times
 
+*Contamination Clock To Q*: quand la clock se déclenche, le temps minimum que peut mettre Q à changer.
+
+*Propagation Delay Clock to Q*: quand la clock se déclenche, le temps maximum que met Q à se stabiliser.
+
+#image("q1d2.png")
+
+Pour que D2 prenne correctement la valeur (pas de métastabilité), il faut que Q soit stable, au moins
+- $t_"setup"$ : avant que la clock ne se déclenche
+- $t_"hold"$ : après que la clock se soit déclenchée
+
+Donc on veut check :
+- $t_"cQ"_"max" + t_"comb"_"max" + t_"setup" <= t_"clock"$ (que le temps avant que les calculs commencent + les calculs + le temps de setup soient inférieurs au temps de la clock)
+- $t_"cQ"_"min" + t_"comb"_"min" >= t_"hold"$ (que le temps avant que les calculs commencent + les calculs soient supérieurs au temps de hold sinon la valeur n'est pas tenue)
+
 Valerio se tourne, va chercher un stylo chez Habib, et se retourne vers moi. Je prends le stylo toutes les 5 secondes #sym.arrow *clock !* et :
-- j'ai besoin de voir le stylo 2s avant de commencer à le prendre (le moment où je vais arriver à 0 mod 5s) #sym.arrow *t_setup !* Cette condition est violée si je vais trop vite (la clock est trop rapide), que Valerio a pas le temps de me montrer le stylo. Soit Valerio doit aller plus vite (on diminue le *t_comb*), soit on doit me ralentir (on dominue le *clock*).
+- j'ai besoin de voir le stylo 2s avant de commencer à le prendre (le moment où je vais arriver à 0 mod 5s) #sym.arrow *t_setup !* Cette condition est violée si je vais trop vite (la clock est trop rapide), que Valerio a pas le temps de me montrer le stylo. Soit Valerio doit aller plus vite (on diminue le *t_comb*), soit on doit me ralentir (on diminue le *clock*).
 - je mets 1s à prendre le stylo *t_hold !* Cette condition est violée si Valerio va chercher un autre stylo chez Habib trop vite.
 
 $ "on veut que la valeur soit bonne avant le " t_"setup" \ arrow.l.r.double t_c Q + t_"comb" <= t_"clock" - t_"setup" $
@@ -51,6 +71,12 @@ $t_c Q_min + t_"comb" + t_"skew_du_FF_A" - t_"skew_du_FF_B" = "delay" $
 
 #image("metastability.png")
 
+solution : mettre deux flip flop en série. si le premier est métastable, le signal va se stabiliser entre les deux et le deuxième flip flop va prendre un signal non métastable.
+
 https://www.youtube.com/watch?v=xCA54Qu4WtQ
 
 #image("setup.png")
+
+== Clock Skew
+
+différence de temps entre le moment où la clock se déclenche pour le flip flop 1 et le flip flop 2. si le skew est positif, c'est cool ! on a plus de temps pour faire les calculs. si le skew est négatif, c'est moins cool, on a moins de temps pour faire les calculs.
