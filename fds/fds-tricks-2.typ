@@ -104,3 +104,13 @@ Il y a deux MUX : un pour activer l'écriture au bon endroit (qui ne s'active qu
 
 #image("verilog-db.png", width: 50%)
 #image("verilog-db-schema.png", width: 40%)
+
+#pagebreak()
+
+== RISC-V
+
+- `li [reg] [value]`: load an immediate into a register
+- `and [reg1] [reg2] [reg3]`: bitwise and, stores the result in reg1
+- `add [reg1] [reg2] [reg3]`: add, stores the result in reg1
+- `srai [reg1] [reg2] [value]`: shift right arithmetic immediate, stores the result in reg1
+- `bne [reg1] [reg2] [label]`: branch not equal, jumps to label if reg1 and reg2 are not equal
