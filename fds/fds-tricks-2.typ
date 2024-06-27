@@ -139,3 +139,24 @@ comme les instructions de type branch mais utilisés pour sauter qqpart sans con
 - `jal return_address, label/immediate` - jump and link, va à `label` et stocke l'adresse de retour (c'est à dire l'adresse de l'instruction juste après le jump (donc pc + 4)) dans `return_address`. Attention quand on précise un `immediate`, il sera ensuite multiplié par 2 (car on ne peut pas sauter au milieu d'une instruction).
 
 - `jalr return_address, t1, immediate_offset` - jump and link register, va à l'adresse stockée dans `t1` et stocke l'adresse de retour dans `return_address`... par contre ici le `immediate_offset` n'est pas multiplié par 2.
+
+=== Données
+
+```asm
+.data
+  matrix:
+    .byte 12, 78, 35, 11, 34, 113, 46, 122, 56, 24, 57, 33
+
+.text
+  # la is a pseudoinstruction that the assembler converts
+  # into two lower-level instructions: auipc x8 ADDRESS_OF_MATRIX
+  # and addi x8 x8 -(INITIAL_PC) (register s0 is an alias for x8).
+  la s0, matrix
+  addi s1, zero, 4
+  addi s2, zero, 3
+  add s3, zero, zero
+
+  start:
+```
+
+voir série papier.
