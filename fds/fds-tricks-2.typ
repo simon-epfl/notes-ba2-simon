@@ -114,3 +114,28 @@ Il y a deux MUX : un pour activer l'écriture au bon endroit (qui ne s'active qu
 - `add [reg1] [reg2] [reg3]`: add, stores the result in reg1
 - `srai [reg1] [reg2] [value]`: shift right "arithmetic" (there is a "logic" version) immediate, stores the result in reg1
 - `bne [reg1] [reg2] [label]`: branch not equal, jumps to label if reg1 and reg2 are not equal
+
+#image("datasize.png")
+
+#pagebreak()
+
+=== Instruction de type Branch
+
+On stocke un `offset` décalage `immediate` qui dit de cb d'instructions on veut sauter, c'est toujours un multiple de 2 (et souvent même de 4 car on ne veut pas sauter au milieu d'une instruction). C'est pour ça que nous n'avons pas besoin de stocker le dernier bit de `immediate` (qui est toujours 0).
+Il peut donc faire 13 bits (car on peut stocker 12 bits et on sait que le dernier est 0).
+
+Attention il est stocké de façon wtf. On stocke ensemble les bits de 4 à 1, le bit 11, et ensuite le reste.
+
+#image("branch.png")
+
+=== Instruction de type Memory
+
+- `lw t1, 12(t2)` : load word, va chercher la valeur à l'adresse `12 + t2` et la met dans `t1`
+
+=== Instruction de type Jump (non conditionnels)
+
+comme les instructions de type branch mais utilisés pour sauter qqpart sans condition (comme lors d'un appel de fonction)
+
+- `jal return_address, label/immediate` - jump and link, va à `label` et stocke l'adresse de retour (c'est à dire l'adresse de l'instruction juste après le jump (donc pc + 4)) dans `return_address`. Attention quand on précise un `immediate`, il sera ensuite multiplié par 2 (car on ne peut pas sauter au milieu d'une instruction).
+
+- `jalr return_address, t1, immediate_offset` - jump and link register, va à l'adresse stockée dans `t1` et stocke l'adresse de retour dans `return_address`... par contre ici le `immediate_offset` n'est pas multiplié par 2.

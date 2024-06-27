@@ -27,7 +27,7 @@ initial begin
     // a && b --> true si les deux sont non nuls
     // a & b --> opération logique AND bit à bit
 
-    $display("%b", (a && b));
+    $display("%b", (2'b11 + 2'b01));
 
 end
 
