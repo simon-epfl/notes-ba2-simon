@@ -476,21 +476,8 @@ endmodule;
 ```)
 
 
-=== Différence entre double et triple égalité
+Pour les scalaires, `if (s)` vérifie si `s` est `1`.
+Pour les vecteurs, `if (s)` vérifie si au moins un des bits de `s` est `1`.
 
-#stick-together(```verilog
-module test;
-
-reg a = 1'bz;
-reg b = 1'bz;
-
-  initial begin
-
-    (a == b) // false!
-    (a === b) // true!
-    // this is because by default you should not compare unknown values together but during simulation it can be useful
-
-  end
-
-endmodule;
-```)
+Pour les scalaires, `!` renvoie la valeur logique opposée.
+Pour les vecteurs, `!` vérifie si le vecteur entier est zéro et renvoie 1 si ça l'est ou 0 sinon.

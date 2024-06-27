@@ -12,8 +12,8 @@ fsm dut (
     .Z(Z)
 );
 
-reg [2:0] a = 5; // 5
-reg [2:0] b = 3'b010;
+reg a = 1'bx;
+reg b = 1'bz;
 
 initial begin
 
@@ -27,7 +27,7 @@ initial begin
     // a && b --> true si les deux sont non nuls
     // a & b --> opération logique AND bit à bit
 
-    $display("%b", (2'b11 + 2'b01));
+    $display("%b", !a);
 
 end
 
