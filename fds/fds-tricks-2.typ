@@ -160,3 +160,13 @@ comme les instructions de type branch mais utilisés pour sauter qqpart sans con
 ```
 
 voir série papier.
+
+#pagebreak()
+
+== Multicycle vs Singlecycle CPU
+
+#image("singlevsmulti.png")
+
+ici on voit que le single cycle doit prendre l'instruction la plus lente de l'instruction set (comme le `load`) et régler sa clock en fonction (ce qui fait que les instructions plus rapides attendent, comme `store`).
+
+en multicycle, chaque instruction est divisée en plusieurs étapes, et chaque étape est exécutée en un cycle. ainsi les cycles sont plus petits et le contrôle est plus fin #sym.arrow moins de temps perdu

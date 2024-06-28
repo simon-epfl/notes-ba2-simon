@@ -1,48 +1,36 @@
-module fsm(
-    input clk,
-    input reset,
-    input W,
-    output reg Z
-);
-
-reg [1:0] next_state;
-reg [1:0] current_state;
-
-// next-state calculation
-always @* begin
-    // fallback value
-    next_state <= 3'b000;
-
-    case ({ current_state, W })
-        3'b000: next_state <= 2'b10;
-        3'b010: next_state <= 2'b01;
-        3'b100: next_state <= 2'b11;
-        3'b110: next_state <= 2'b10;
-
-        3'b001: next_state <= 2'b11;
-        3'b011: next_state <= 2'b00;
-        3'b101: next_state <= 2'b00;
-        3'b111: next_state <= 2'b01;
-
-        default: next_state <= 2'b00;
-    endcase
-end
-
-// next-state assignation
-always @(posedge clk) begin
-
-    if (reset) begin
-        current_state <= 2'b00;
-    end else begin
-        current_state <= next_state;
-    end
+module mystery_module (clk,
+                       en,
+                       out);
     
-end
+    input clk, en;
+    reg [63:0] in1 = 64'h0807060504030201;
+    reg [7:0] in2 = 8'b10111011;
+    output reg[10:0] out = 0;
+    
+    reg[2:0] var1 = 0;
+    
+    always @(posedge clk) begin
+        //out <= out;
+        if (en & (var1 == 0)) begin
+            var1 <= var1 + 1'b1;
+            
+            if (in2[var1])
+                out <= 11'd0 + in1[var1*8 +: 8];
+            else
+                out <= 11'd0 - in1[var1*8 +: 8];
+        end
+        
+        if (var1 != 0) begin
+            var1 <= var1 + 1'b1;
+            
+            if (in2[var1])
+                out <= out + in1[var1*8 +: 8];
+            else
+                out <= out - in1[var1*8 +: 8];
+        end
+    end
 
-// output calculation
-always @* begin
-    Z = current_state == 11;
-end
-
-
+    always @*
+        $display("out from inside = %d", out);
+    
 endmodule
