@@ -44,7 +44,7 @@ module top_module (
                 endcase
             STATE_A: next_state = STATE_B;
             STATE_IDLE: next_state = STATE_A;
-            default: next_state = STATE_IDLE;
+            default: next_state = current_state;
         endcase
         
     end
