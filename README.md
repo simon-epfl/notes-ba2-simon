@@ -90,6 +90,7 @@ N/A.
 * [Mémo sur le cours (jusqu'au midterm)](./fds/fds-tricks-1.pdf)
 * [Mémo sur le cours (du midterm au final)](./fds/fds-tricks-2.pdf)
 * [Mémo sur Verilog](./fds/guide_verilog.pdf)
+* [Mémo sur le sing/multi cycle CPU](./fds/multicycle.pdf)
 
 ### Projets
 
@@ -99,6 +100,7 @@ N/A.
 
 ### Séries d'exercices
 
+* [Rédaction de l'exercise book (64 exercises)](./fds/exercise-book.pdf)
 * [Rédaction de la série 1](./fds/series/FDS%20-%20Week%201.pdf)
 * [Rédaction de la série 2](./fds/series/FDS%20-%20Week%202.pdf)
 * [Rédaction de la série 3](./fds/series/FDS%20-%20Week%203.pdf)
@@ -115,6 +117,10 @@ N/A.
 * [Rédaction de la série 13](./fds/series/FDS%20-%20Week%2013.pdf)
 * [Rédaction de la série 14](./fds/series/FDS%20-%20Week%2014.pdf)
 * [Rédaction de la série exo bonus midterm](./fds/series/FDS%20-%20Bonus.pdf)
+
+### Autres
+
+* [Rédaction des examens de l'ETH (2022-2017)](./fds/eth-exams.pdf)
 
 ## SHS
 
