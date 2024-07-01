@@ -3,8 +3,8 @@ module top_module (
     input resetn,    // active-low synchronous reset
     input x,
     input y,
-    output f,
-    output g
+    output reg f,
+    output reg g
 ); 
   
     parameter STATE_A = 4'b0000;
@@ -21,43 +21,48 @@ module top_module (
     reg [3:0] next_state;
     
     always @* begin
-        next_state <= current_state;
+        next_state = current_state;
         case (current_state)
             STATE_B:
-                if (x == 1) next_state <= STATE_C1;
+                if (x == 1) next_state = STATE_C1;
             STATE_C1:
-                if (x == 0) next_state <= STATE_C2;
+                if (x == 0) next_state = STATE_C2;
             STATE_C2:
                 case(x)
-                    1'b0: next_state <= STATE_B;
-                    1'b1: next_state <= STATE_D;
+                    1'b0: next_state = STATE_B;
+                    1'b1: next_state = STATE_D;
                 endcase
             STATE_D:
                 case(y)
-                    1'b0: next_state <= STATE_E;
-                    1'b1: next_state <= STATE_G;
+                    1'b0: next_state = STATE_E;
+                    1'b1: next_state = STATE_G;
                 endcase
             STATE_E:
                 case(y)
-                    1'b0: next_state <= STATE_F;
-                    1'b1: next_state <= STATE_G;
+                    1'b0: next_state = STATE_F;
+                    1'b1: next_state = STATE_G;
                 endcase
-            STATE_A: next_state <= STATE_B;
-            STATE_IDLE: next_state <= STATE_A;
+            STATE_A: next_state = STATE_B;
+            STATE_IDLE: next_state = STATE_A;
+            default: next_state = current_state;
         endcase
         
     end
     
     always @(posedge clk) begin
-        if (resetn == 1'b0) begin
+        if (!resetn) begin
             current_state <= STATE_IDLE;
         end else begin
             current_state <= next_state;
         end
     end
     
-    assign f = current_state == STATE_A;
-    assign g = current_state == STATE_E
+    always @* begin
+        f = current_state == STATE_A;
+    	g = current_state == STATE_E
             || current_state == STATE_D
             || current_state == STATE_G;
+    end
+    
+    
 endmodule
