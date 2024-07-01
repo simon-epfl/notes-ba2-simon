@@ -57,7 +57,7 @@ Gray Code vers Binary : \
 
 == Comprendre la multiplication en 2's Complement
 
-#image("mult.png")
+#image("assets/mult.png")
 
 Pourquoi est-ce qu'on doit negate le dernier multiplicant ? On veut par exemple calculer -17x14.
 
@@ -80,8 +80,8 @@ dynamic range -> te dit si le système de nombre peut gérer des très grands no
 
 == Propriétés en floating point
 
-#image("accuracy_floating_point.png")
-#image("resolution_floating_point.png")
+#image("assets/accuracy_floating_point.png")
+#image("assets/resolution_floating_point.png")
 
 == Pourquoi est-ce qu'on fait un tie to even ?
 
@@ -91,7 +91,7 @@ Si on veut faire une division après l'arrondi (un shift), on perd le risque de 
 
 pour faire une karnaugh map #sym.arrow mettre bien les nombres qui ont une unique différence entre eux à côté 10 11 01 00 (10 et 01 sont à côté parce qu'on considère un tableau comme une boule 3D).
 
-#image("karnaugh.png")
+#image("assets/karnaugh.png")
 
 == Pourquoi on écrit la P.O.S en prenant les lignes à zéro et en complémentant ?
 
@@ -107,7 +107,7 @@ En fait on "fuit les zéros", c-a-d qu'on prend toutes les lignes qui donnent z�
 
 pour passer d'une SOP à une POS, double négation, puis développement, puis application de la négation
 
-#image("pos.png")
+#image("assets/pos.png")
 
 == Comment comparer rapidement deux expressions
 
@@ -117,7 +117,7 @@ Pour passer de maxterms M1, M4 à la liste des minterms, on prend les complémen
 
 == Comprendre les delays et les fan-in/fan-out
 
-#image("fanout.png")
+#image("assets/fanout.png")
 
 Pourquoi est-ce que l'inverter p2 prend 20ns à charger le gate AND à p7 et pas juste 10ns ? (comme il est branché à un seul input ?)
 
@@ -188,10 +188,10 @@ ne pas oublier qu'on peut créer un inverter en mettant en chaîne deux NAND ou 
 
 Quand on a un bus de données (c'est à dire une sorte de voie sur laquelle des modules peuvent se connecter), on veut que ceux-ci puissent lire et écrire dedans. Sauf qu'on doit décider qui peut écrire à un moment donné, ils ne peuvent pas tous écrire en même temps :
 
-#image("tristate.png")
+#image("assets/tristate.png")
 
 Les tristate buffers permettent de résoudre ce problème. Ils ont 3 états : 0, 1, et Z (pour high impedance). Quand le tristate est à Z, il est déconnecté du bus (partie écriture), et les autres modules peuvent écrire dessus. Quand il est à 0 ou 1, il peut écrire sur le bus. (voir https://www.youtube.com/watch?v=_3cNcmli6xQ)
 
 versus implémentation MUX (beaucoup moins propre) :
 
-#image("mux.png", width: 95%)
+#image("assets/mux.png", width: 95%)

@@ -14,6 +14,13 @@
 
 = Tricks de FDS (part II)
 
+== Comment faire la différence entre un circuit séquentiel et combinatoire ?
+
+En fait, on veut vérifier si notre output est une fonction d'un état + d'inputs ou juste d'inputs.
+
+- vérifier que tous les inputs sont bien utilisés dans le `always` block. Si ce n'est pas le cas, un input pourrait changer tandis que l'output reste le même #sym.arrow séquentiel.
+- vérifier que tous les cas sont bien gérés dans le `case` block #sym.arrow combinatoire.
+
 == FSM en Verilog
 
 - next-state logic (en always \@\*).
@@ -53,7 +60,7 @@
 
 *Propagation Delay Clock to Q*: quand la clock se déclenche, le temps maximum que met Q à se stabiliser.
 
-#image("q1d2.png")
+#image("assets/q1d2.png")
 
 Pour que D2 prenne correctement la valeur (pas de métastabilité), il faut que Q soit stable, au moins
 - $t_"setup"$ : avant que la clock ne se déclenche
@@ -80,13 +87,13 @@ Vérifier le hold:
 
 $t_c Q_min + t_"comb" + t_"skew_du_FF_A" - t_"skew_du_FF_B" = "delay" $
 
-#image("metastability.png")
+#image("assets/metastability.png")
 
 solution : mettre deux flip flop en série. si le premier est métastable, le signal va se stabiliser entre les deux et le deuxième flip flop va prendre un signal non métastable.
 
 https://www.youtube.com/watch?v=xCA54Qu4WtQ
 
-#image("setup.png")
+#image("assets/setup.png")
 
 == Clock Skew
 
@@ -96,14 +103,14 @@ différence de temps entre le moment où la clock se déclenche pour le flip flo
 
 Il y a deux MUX : un pour activer l'écriture au bon endroit (qui ne s'active que quand `WE` est vrai), un pour choisir ce qui sort.
 
-#image("dffp.png")
+#image("assets/dffp.png")
 
 === Memory dans Verilog
 
 `reg [nombre-de-bits-par-word-1:0] nom-de-la-variable [nombre-de-words-1:0];`
 
-#image("verilog-db.png", width: 50%)
-#image("verilog-db-schema.png", width: 40%)
+#image("assets/verilog-db.png", width: 50%)
+#image("assets/verilog-db-schema.png", width: 40%)
 
 #pagebreak()
 
@@ -115,7 +122,7 @@ Il y a deux MUX : un pour activer l'écriture au bon endroit (qui ne s'active qu
 - `srai [reg1] [reg2] [value]`: shift right "arithmetic" (there is a "logic" version) immediate, stores the result in reg1
 - `bne [reg1] [reg2] [label]`: branch not equal, jumps to label if reg1 and reg2 are not equal
 
-#image("datasize.png")
+#image("assets/datasize.png")
 
 #pagebreak()
 
@@ -126,7 +133,7 @@ Il peut donc faire 13 bits (car on peut stocker 12 bits et on sait que le dernie
 
 Attention il est stocké de façon wtf. On stocke ensemble les bits de 4 à 1, le bit 11, et ensuite le reste.
 
-#image("branch.png")
+#image("assets/branch.png")
 
 === Instruction de type Memory
 
@@ -165,7 +172,7 @@ voir série papier.
 
 == Multicycle vs Singlecycle CPU
 
-#image("singlevsmulti.png")
+#image("assets/singlevsmulti.png")
 
 ici on voit que le single cycle doit prendre l'instruction la plus lente de l'instruction set (comme le `load`) et régler sa clock en fonction (ce qui fait que les instructions plus rapides attendent, comme `store`).
 
